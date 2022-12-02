@@ -1,0 +1,27 @@
+body{
+/*  background-color: black;
+ height: auto;*/
+/*  width: auto;
+  margin: 0 auto;*/
+text-align: center;
+}
+#logo{
+/*background-color: red;*/
+}
+
+#main{
+margin-top: -5%;
+}
+
+.bt_mida{
+  width: 40%;
+  font-size: 20px;
+  margin: 0 10%;
+}
+footer{
+  background-color: green;
+  margin-top: 25px;
+}
+h1{
+
+}
