@@ -16,11 +16,27 @@
     <a href="carnet.php"><button class="bt_mida">El meu carnet</button></a>
     <a href="carnet.php"><button class="bt_mida">Promocions</button></a>
     <a href="carnet.php"><button class="bt_mida">Contacte</button></a>
-    <a href=""><button class="bt_mida" >Tancar sessió</button></a>
-
+    <form method="post">
+        <input type="submit" name="button1" class="bt_mida" value="Tancar sessió" />
+    </form>
   </div>
   <footer>
   Politica privacitat, cookies, desenvolupador
   </footer>
 </body>
 </html>
+
+<?php
+
+  //per eliminar la cookie inici sessió i tornar al login
+
+        if(array_key_exists('button1', $_POST)) {
+            button1();
+        }
+        function button1() {
+            echo "This is Button1 that is selected";
+            ///OJO el path "/" ha de ser el matex que quan es crea al index
+            setcookie ("username","",time()- (60*60*24*365), "/");
+            header("Location: ../index.php");
+        }
+?>

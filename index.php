@@ -82,7 +82,7 @@ if (isset($_POST['login'])) {
 
             }else {
               echo " hi ha cookie";
-              setcookie ("username",$_POST["username"],time()+ (60*60*24*365));
+              setcookie ("username",$_POST["username"],time()+ (60*60*24*365),"/");
             }
             header("Location: php/menu.php");
             echo  $_SESSION['num_subscriptor'];
