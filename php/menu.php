@@ -11,12 +11,12 @@
     <img src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="30%">
   </div>
   <div id="main">
-    <h1>Hola <?php echo $_COOKIE['username'] ?>!</h1>
+    <h1>Holaa <?php echo $_COOKIE['username'] ?>!</h1>
 
     <a href="carnet.php"><button class="bt_mida">El meu carnet</button></a>
     <a href="carnet.php"><button class="bt_mida">Promocions</button></a>
     <a href="carnet.php"><button class="bt_mida">Contacte</button></a>
-    <a href=""><button class="bt_mida" onclick="tancar()">Tancar sessió</button></a>
+    <a href=""><button class="bt_mida" >Tancar sessió</button></a>
 
   </div>
   <footer>
@@ -24,10 +24,3 @@
   </footer>
 </body>
 </html>
-<?php
-//per eliminar cookie (en proves)
-function tancar(){
-    echo " Have a great day";
-}
-php_func();
-?>
