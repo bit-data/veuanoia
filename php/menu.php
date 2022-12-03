@@ -11,7 +11,7 @@
     <img src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="30%">
   </div>
   <div id="main">
-    <h1>Hola <?php echo $_COOKIE['username'] ?>!</h1>
+    <h1>Hola <?php echo $_COOKIE['nom'] ?>!</h1>
 
     <a href="carnet.php"><button class="bt_mida">El meu carnet</button></a>
     <a href="carnet.php"><button class="bt_mida">Promocions</button></a>
@@ -37,6 +37,9 @@
             echo "This is Button1 that is selected";
             ///OJO el path "/" ha de ser el matex que quan es crea al index
             setcookie ("username","",time()- (60*60*24*365), "/");
+            setcookie ("nom","",time()- (60*60*24*365), "/");
+            setcookie ("cognoms","",time()- (60*60*24*365), "/");
+            setcookie ("email","",time()- (60*60*24*365), "/");
             header("Location: ../index.php");
         }
 ?>

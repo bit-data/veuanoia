@@ -65,7 +65,9 @@ if (isset($_POST['login'])) {
 
 
     $passwordHash = $result['password'];//guardar dades BBDD
-
+    $name = $result['nom'];//guardar dades BBDD
+    $surname = $result['cognoms'];//guardar dades BBDD
+    $email_sub = $result['email'];//guardar dades BBDD
   //  echo $passwordHash; //mostrar dades bbdd
 
   //bucle per comprobar si està a la bbdd i redirigir cap al menú o al error
@@ -83,7 +85,10 @@ if (isset($_POST['login'])) {
 
             }else {
               echo " hi ha cookie";
-              setcookie ("username",$_POST["username"],time()+ (60*60*24*365),"/");
+              setcookie ("username",$username,time()+ (60*60*24*365),"/");
+              setcookie ("nom",$name,time()+ (60*60*24*365),"/");
+              setcookie ("cognoms",$surname,time()+ (60*60*24*365),"/");
+              setcookie ("email",$email_sub,time()+ (60*60*24*365),"/");
             }
             header("Location: php/menu.php");
             echo  $_SESSION['num_subscriptor'];
