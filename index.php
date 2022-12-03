@@ -14,7 +14,7 @@
     <h1>Inici de sessió</h1>
   <form method="post"  name="signin-form">
       <div class="form-element">
-          <label>Username</label>
+          <label>DNI/CIF</label>
           <input type="text" name="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" pattern="[a-zA-Z0-9]+" required />
       </div>
       <div class="form-element">
@@ -56,7 +56,8 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = $connection->prepare("SELECT * FROM subscriptors WHERE USERNAME=:username");
+    //$query = $connection->prepare("SELECT * FROM subscriptors WHERE USERNAME=:username");
+    $query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI=:username");
     $query->bindParam("username", $username, PDO::PARAM_STR);
     $query->execute();
 
