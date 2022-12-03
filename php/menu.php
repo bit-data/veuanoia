@@ -25,6 +25,7 @@
 </body>
 </html>
 <?php
+//per eliminar cookie (en proves)
 function tancar(){
     echo " Have a great day";
 }

@@ -34,6 +34,8 @@
 
 include('php/config.php');
 
+//bucle per comprobar si hi ha cookie prèvia
+
 if(empty($_COOKIE["username"]))
 {
 
@@ -46,6 +48,8 @@ else {
 }
 
 session_start();
+
+//Bucle per login
 
 if (isset($_POST['login'])) {
 
@@ -63,8 +67,9 @@ if (isset($_POST['login'])) {
 
   //  echo $passwordHash; //mostrar dades bbdd
 
+  //bucle per comprobar si està a la bbdd i redirigir cap al menú o al error
     if (!$result) {
-        echo '<p class="error">¡Username password combination is wrong!</p>';
+        //echo '<p class="error">¡Username password combination is wrong!</p>';
         header("Location: php/error_login.html");
     } else {
         //if (password_verify($password, $result['PASSWORD'])) {
