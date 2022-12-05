@@ -1,35 +1,39 @@
 <?php
 if(isset($_POST['email'])) {
 
-// Debes editar las próximas dos líneas de código de acuerdo con tus preferencias
-$email_to = "destinatario@sudominio.com";
-$email_subject = "Contacto desde el sitio web";
+//email i subject
+$email_to = "info@bit-data.es";
+$email_subject = "App club subscriptor";
 
-// Aquí se deberían validar los datos ingresados por el usuario
-if(!isset($_POST['first_name']) ||
-!isset($_POST['last_name']) ||
+// Validació camps formulari
+if(!isset($_POST['nom_cognoms']) ||
+//!isset($_POST['cognoms']) ||
 !isset($_POST['email']) ||
-!isset($_POST['telephone']) ||
-!isset($_POST['comments'])) {
+//!isset($_POST['telephone']) ||
+!isset($_POST['comentari'])) {
 
+// resposta error formulari
 echo "<b>Ocurrió un error y el formulario no ha sido enviado. </b><br />";
 echo "Por favor, vuelva atrás y verifique la información ingresada<br />";
 die();
 }
 
-$email_message = "Detalles del formulario de contacto:\n\n";
-$email_message .= "Nombre: " . $_POST['first_name'] . "\n";
-$email_message .= "Apellido: " . $_POST['last_name'] . "\n";
+//Cos email
+$email_message = "Infromació del formulari de contacte:\n\n";
+$email_message .= "Subscriptor/a: " . $_POST['nom_cognoms'] . "\n";
+//$email_message .= "Apellido: " . $_POST['last_name'] . "\n";
 $email_message .= "E-mail: " . $_POST['email'] . "\n";
-$email_message .= "Teléfono: " . $_POST['telephone'] . "\n";
-$email_message .= "Comentarios: " . $_POST['comments'] . "\n\n";
+//$email_message .= "Teléfono: " . $_POST['telephone'] . "\n";
+$email_message .= "Comentarios: " . $_POST['comentari'] . "\n\n";
 
-// Ahora se envía el e-mail usando la función mail() de PHP
+// Enviament de l'email
+$email_from = $_POST['email'];
 $headers = 'From: '.$email_from."\r\n".
 'Reply-To: '.$email_from."\r\n" .
 'X-Mailer: PHP/' . phpversion();
 @mail($email_to, $email_subject, $email_message, $headers);
 
+//missatge d'enviament correcte
 echo "¡El formulario se ha enviado con éxito!";
 }
 ?>

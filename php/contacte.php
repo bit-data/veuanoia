@@ -26,7 +26,7 @@ echo "hola";
     </div>
     <div class="form-element">
       <label>Text</label>
-      <input type="textarea" maxlength="500" name="text_area" value="" required />
+      <textarea rows= "5" name="comentari" class="text_area" value="" required></textarea>
     </div>
     <button type="submit" name="enviar" value="login">Enviar</button>
 </form>
