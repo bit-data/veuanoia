@@ -44,10 +44,10 @@ if(empty($_COOKIE["username"]))
 else { //comprobem que el dni continua a la bbdd no l'han donat de baixa
   $dni_sub = $_COOKIE["username"];
   $query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI='$dni_sub'");
-  $query->bindParam("username", $username, PDO::PARAM_STR);
+//  $query->bindParam("username", $username, PDO::PARAM_STR);
   $query->execute();
   $result = $query->fetch(PDO::FETCH_ASSOC);
-  echo "hola".$result;
+  //echo "hola".$result;
   if ($result=="")
   {
     setcookie ("username","",time()- (60*60*24*365), "/");
