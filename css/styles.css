@@ -29,3 +29,29 @@ h1{
 .text_area {
 
 }
+/*estils carnet.php*/
+#carnet
+{
+  background-color: orange;
+  width: 70%;
+  height: 350px;
+  margin-left: 15%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+#telefon
+{
+  background-color: green;
+  width: 70%;
+/*  align-self: flex-start;*/
+position:fixed;
+}
+#usuari
+{
+  background-color: blue;
+  width: 70%;
+  /*align-self: center;*/
+  font-size: 24px;
+
+}
