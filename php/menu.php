@@ -15,7 +15,7 @@
 
     <a href="carnet.php"><button class="bt_mida">El meu carnet</button></a>
     <a href="carnet.php"><button class="bt_mida">Promocions</button></a>
-    <a href="carnet.php"><button class="bt_mida">Contacte</button></a>
+    <a href="contacte.php"><button class="bt_mida">Contacte</button></a>
     <form method="post">
         <input type="submit" name="button1" class="bt_mida" value="Tancar sessió" />
     </form>
