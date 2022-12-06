@@ -13,19 +13,19 @@
   <div id="main">
     <div id="carnet">
       <div id="telefon">
-        <p><h2>Telèfon d'antenció al subscriptor</h2</p>
-        <h2>93 804 24 51/<h2>
+        <h2>Telèfon d'antenció al subscriptor</br>
+        93 804 24 51 / hola@email.cat<h2>
       </div>
         <div id="usuari">
-          <p>Albert Escobar Ameijeiras</p>
-          <p>Nº Subscriptor/a</p>
+          <p><?php echo $_COOKIE['nom']." ".$_COOKIE['cognoms'] ?></br>
+          nº subscriptor/a: <?php echo $_COOKIE['subscriptor'] ?></p>
         </div>
         <div id="info">
           <p>Aquesta targeta serveix per gaudir de tots els avantatges i
             descomptes destinats als subscriptors. En poden gaudir també
             familiars directes del titular.
-            En cas de pèrdua cal comunicar-ho al departament de subscriptors.</p>
-            <h1>www.veuanoia.cat</h1>
+            En cas de pèrdua cal comunicar-ho al departament de subscriptors.<br/>
+            <h1>www.veuanoia.cat</h1></p>
         </div>
     </div>
   </div>

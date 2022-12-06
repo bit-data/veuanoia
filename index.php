@@ -54,6 +54,7 @@ else { //comprobem que el dni continua a la bbdd no l'han donat de baixa
     setcookie ("nom","",time()- (60*60*24*365), "/");
     setcookie ("cognoms","",time()- (60*60*24*365), "/");
     setcookie ("email","",time()- (60*60*24*365), "/");
+    setcookie ("subscriptor","",time()- (60*60*24*365), "/");
     //header("Location: php/error_login.php");
   } else {
   //si hi ha cookie i el DNI continua a la BBDD carrèga el menú
@@ -82,6 +83,7 @@ if (isset($_POST['login'])) {
     $name = $result['nom'];//guardar dades BBDD
     $surname = $result['cognoms'];//guardar dades BBDD
     $email_sub = $result['email'];//guardar dades BBDD
+    $num_sub = $result['num_subs'];//guardar dades BBDD
   //  echo $passwordHash; //mostrar dades bbdd
 
   //bucle per comprobar si està a la bbdd i redirigir cap al menú o al error
@@ -91,7 +93,7 @@ if (isset($_POST['login'])) {
     } else {
         //if (password_verify($password, $result['PASSWORD'])) {
         if ($password == $passwordHash) {
-            $_SESSION['num_subscriptor'] = $result['num_subs'];
+            //$_SESSION['num_subscriptor'] = $result['num_subs'];
             //echo '<p class="success">Congratulations, you are logged in!</p>';
             if(empty($_POST["username"]))
             {
@@ -103,9 +105,10 @@ if (isset($_POST['login'])) {
               setcookie ("nom",$name,time()+ (60*60*24*365),"/");
               setcookie ("cognoms",$surname,time()+ (60*60*24*365),"/");
               setcookie ("email",$email_sub,time()+ (60*60*24*365),"/");
+              setcookie ("subscriptor",$num_sub,time()+ (60*60*24*365),"/");
             }
             header("Location: php/menu.php");
-            echo  $_SESSION['num_subscriptor'];
+            //echo  $_SESSION['num_subscriptor'] . "hola";
 
         } else {
             //echo '<p class="error">Username password combination is wrong!</p>';
