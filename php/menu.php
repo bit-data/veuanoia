@@ -12,12 +12,12 @@
   </div>
   <div id="main">
     <h1>Hola <?php echo $_COOKIE['nom'] ?>!</h1>
-
-    <a href="carnet.php"><button class="bt_mida">El meu carnet</button></a>
-    <a href="https://veuanoia.cat/"><button class="bt_mida">Promocions</button></a>
-    <a href="contacte.php"><button class="bt_mida">Contacte</button></a>
+    <ul>
+    <li><a href="carnet.php"><button class="bt_mida">El meu carnet</button></a></li>
+    <li><a href="https://veuanoia.cat/"><button class="bt_mida">Promocions</button></a></li>
+    <li><a href="contacte.php"><button class="bt_mida">Contacte</button></a></li>
     <form method="post">
-        <input type="submit" name="button1" class="bt_mida" value="Tancar sessió" />
+      <li>  <input type="submit" name="button1" class="bt_mida" value="Tancar sessió" /></li>
     </form>
   </div>
   <footer>

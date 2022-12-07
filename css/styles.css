@@ -13,18 +13,30 @@ text-align: center;
 margin-top: -5%;
 }
 
-.bt_mida{
-  width: 40%;
-  font-size: 20px;
-  margin: 0 10%;
+.input_cif{
+  margin-left: 4px;
 }
+
+.bt_mida{
+  width: 200px;
+  font-size: 20px;
+/*  margin: 0 auto;*/
+}
+
+.bt_mida_login{
+  width: 200px;
+  font-size: 20px;
+  margin-top: 10px;
+/*  margin: 0 10%;*/
+}
+
 footer{
   /*background-color: green;*/
   margin-top: 25px;
   text-align: center;
 }
 
-footer ul{
+ul{
   list-style-type: none;
 }
 

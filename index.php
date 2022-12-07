@@ -15,13 +15,13 @@
   <form method="post"  name="signin-form">
       <div class="form-element">
           <label>DNI/CIF</label>
-          <input type="text" name="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" pattern="[a-zA-Z0-9]+" required />
+          <input type="text" class="input_cif" name="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" pattern="[a-zA-Z0-9]+" required />
       </div>
       <div class="form-element">
           <label>Password</label>
           <input type="password" name="password" required />
       </div>
-      <button type="submit" name="login" value="login">Log In</button>
+      <button type="submit" class="bt_mida_login" name="login" value="login">Log In</button>
   </form>
   </div>
   <footer>
