@@ -30,7 +30,11 @@
     </div>
   </div>
   <footer>
-  Politica privacitat, cookies, desenvolupador
+      <ul>
+        <li><a href="">Política de privacitat</li></a>
+        <li><a href="">Política de cookies</li></a>
+        <li>App desenvolupada per <a href="https://wwww.bit-data.es">Bit_Data</li></a>
+      </ul>
   </footer>
 </body>
 </html>

@@ -19,9 +19,15 @@ margin-top: -5%;
   margin: 0 10%;
 }
 footer{
-  background-color: green;
+  /*background-color: green;*/
   margin-top: 25px;
+  text-align: center;
 }
+
+footer ul{
+  list-style-type: none;
+}
+
 h1{
 
 }
