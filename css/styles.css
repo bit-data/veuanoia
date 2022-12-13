@@ -18,12 +18,16 @@ margin-top: -5%;
   margin: 10px 0px;
 }
 
-.input_form{
+.input_form, .input_form_pass{
   padding: 5px 0;
 }
 
-.input_cif{
+/*.input_cif{
   margin-left: 4px;
+}*/
+
+.input_form {
+  margin-left: 10px;
 }
 
 

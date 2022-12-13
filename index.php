@@ -14,12 +14,12 @@
     <h1>Inici de sessió</h1>
   <form method="post"  name="signin-form">
       <div class="form-element">
-          <label>DNI/CIF&nbsp;</label>
+          <label>DNI/CIF</label>
           <input type="text" class="input_form" name="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" pattern="[a-zA-Z0-9]+" required />
       </div>
       <div class="form-element">
           <label>Password</label>
-          <input type="password" class="input_form" name="password" required />
+          <input type="password" class="input_form_pass" name="password" required />
       </div>
       <button type="submit" class="bt_mida" name="login" value="login">Log In</button>
   </form>
