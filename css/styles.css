@@ -31,7 +31,7 @@ margin-top: -5%;
 }
 
 
-.bt_mida{
+.bt_mida, .bt_tancar{
   width: 200px;
   font-size: 20px;
   margin: 5px 0;
@@ -43,8 +43,17 @@ margin-top: -5%;
   margin-top: 10px;
 }
 
+.bt_tancar{
+  background-color: red;
+  color: black;
+}
+
 .bt_mida:hover{
   color:black;
+}
+
+.bt_tancar:hover{
+  color:white;
 }
 
 .bt_mida_login{

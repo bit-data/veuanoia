@@ -17,7 +17,7 @@
     <li><a href="https://veuanoia.cat/"><button class="bt_mida">Promocions</button></a></li>
     <li><a href="contacte.php"><button class="bt_mida">Contacte</button></a></li>
     <form method="post">
-      <li><input type="submit" name="button1" class="bt_mida" value="Tancar sessió" /></li>
+      <li><input type="submit" name="button1" class="bt_tancar" value="Tancar sessió" /></li>
     </form>
   </div>
   <footer>

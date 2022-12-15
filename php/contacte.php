@@ -25,7 +25,7 @@
       <label class="text">Text</label>
       <textarea rows= "5" class="input_form" name="comentari" class="text_area" value="" required></textarea>
     </div>
-    <button type="submit" name="enviar" value="login">Enviar</button>
+    <button type="submit" class="bt_mida" name="enviar" value="login">Enviar</button>
 </form>
 </div>
 <footer>
