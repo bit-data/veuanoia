@@ -101,10 +101,10 @@ if (isset($_POST['login'])) {
             //echo '<p class="success">Congratulations, you are logged in!</p>';
             if(empty($_POST["username"]))
             {
-            echo "no hi ha cookie";
+          //  echo "no hi ha cookie";
 
             }else {
-              echo " hi ha cookie";
+            //  echo " hi ha cookie";
               setcookie ("username",$username,time()+ (60*60*24*365),"/");
               setcookie ("nom",$name,time()+ (60*60*24*365),"/");
               setcookie ("cognoms",$surname,time()+ (60*60*24*365),"/");

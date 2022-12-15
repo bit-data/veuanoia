@@ -110,3 +110,22 @@ ul{
 /*  margin-top: -5px;*/
   text-align: center;
 }
+
+.email{
+  padding-right: 65px;
+}
+
+.text{
+  padding-right: 50px;
+  vertical-align: 200%;
+}
+
+@media screen and (max-width: 285px) {
+    .text{
+      padding-right: 0px;
+      vertical-align: 0%;
+    }
+    .email{
+      padding-right: 0px;
+    }
+}

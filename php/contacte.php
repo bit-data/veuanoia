@@ -5,9 +5,6 @@
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<?php
-echo "hola";
-?>
 </head>
 <body>
   <div id="logo">
@@ -18,15 +15,15 @@ echo "hola";
 <form name="contacte" method="post" action="enviar_form.php">
     <div class="form-element">
         <label>Subscriptor/a</label>
-        <input type="text" name="nom_cognoms" value="<?php echo $_COOKIE['nom'] ?>" required />
+        <input type="text" class="input_form" name="nom_cognoms" value="<?php echo $_COOKIE['nom'] ?>" required />
     </div>
     <div class="form-element">
-      <label>Email</label>
-      <input type="text" name="email" value="<?php { echo $_COOKIE["email"]; } ?>" required />
+      <label class="email">Email</label>
+      <input type="text" class="input_form" name="email" value="<?php { echo $_COOKIE["email"]; } ?>" required />
     </div>
     <div class="form-element">
-      <label>Text</label>
-      <textarea rows= "5" name="comentari" class="text_area" value="" required></textarea>
+      <label class="text">Text</label>
+      <textarea rows= "5" class="input_form" name="comentari" class="text_area" value="" required></textarea>
     </div>
     <button type="submit" name="enviar" value="login">Enviar</button>
 </form>
