@@ -56,12 +56,12 @@ margin-top: -5%;
   color:white;
 }
 
-.bt_mida_login{
+/*.bt_mida_login{
   width: 200px;
   font-size: 20px;
   margin-top: 10px;
-/*  margin: 0 10%;*/
-}
+
+}*/
 
 footer{
   /*background-color: green;*/
@@ -137,4 +137,9 @@ ul{
     .email{
       padding-right: 0px;
     }
+}
+
+
+.btn-primary{
+    background-color: #ff9400;
 }
