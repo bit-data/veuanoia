@@ -11,7 +11,11 @@ text-align: center;
 }
 
 #main{
-margin-top: -5%;
+/*margin-top: -5%;*/
+}
+
+.bt_menu{
+  margin: 10px 0;
 }
 
 .form-element{
@@ -142,4 +146,9 @@ ul{
 
 .btn-primary{
     background-color: #ff9400;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: black;
 }
