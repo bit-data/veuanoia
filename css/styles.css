@@ -152,3 +152,7 @@ ul{
 .btn-primary:hover{
     background-color: black;
 }
+
+.btn-primary:active{
+    background-color: black;
+}
