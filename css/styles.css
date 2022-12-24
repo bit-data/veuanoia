@@ -156,3 +156,27 @@ ul{
 .btn-primary:active{
     background-color: black;
 }
+
+.carnet {
+
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  background-color: #ff9400;
+
+}
+
+
+.logo_carnet {
+/*  float: :right;*/
+  background-color: red;
+/*  text-align: left;*/
+  width: 25%;
+  float: left;
+
+}
+.dades_anoia{
+width: 75%;
+  background-color: blue;
+  float: left;
+}
