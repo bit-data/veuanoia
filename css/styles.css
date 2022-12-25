@@ -1,4 +1,4 @@
-body{
+body, .body_carnet{
 /*  background-color: black;
  height: auto;*/
 /*  width: auto;
@@ -157,26 +157,44 @@ ul{
     background-color: black;
 }
 
-.carnet {
+.body_carnet{
+  background-color: #ff9400;
+}
 
+.carnet {
   width: 90%;
   height: 100%;
   margin: auto;
-  background-color: #ff9400;
-
+/*  background-color: #ff9400;*/
 }
 
-
 .logo_carnet {
-/*  float: :right;*/
-  background-color: red;
-/*  text-align: left;*/
+/*  background-color: red;*/
   width: 25%;
+  height: 35%;
   float: left;
+  text-align: left;
 
 }
 .dades_anoia{
-width: 75%;
-  background-color: blue;
+  width: 75%;
+  height: 35%;
+  /*background-color: blue;*/
+  padding-top: 3%;
+  text-align: center;
   float: left;
+  margin-left: -12.5%;
+
+}
+
+.dades_subscriptor{
+/*  background-color: green;*/
+  width: 100%;
+  clear: both;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.info_anoia{
+  font-size: 12px;
 }
