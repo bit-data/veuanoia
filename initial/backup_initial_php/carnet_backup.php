@@ -63,11 +63,25 @@
 </style>
 <link href="../css/signin.css" rel="stylesheet">
 </head>
-<body class="body_carnet_nou">
-  <!-- <div class="carnet_portrait">
-   <div class="dades_subscriptor">-->
-  <p> <?php echo $_COOKIE['nom']." ".$_COOKIE['cognoms']?></p>
-<!--  </div>-->
+<body class="body_carnet">
+  <div class="carnet">
+    <div class="logo_carnet">
+    <img src="../images/logo_sub2_marc.png" alt="Logo del club del subscriptor" width="70%">
+  </div>
+  <div class="dades_anoia">
+    <h3>Antenció al subscriptor/a</br>
+    93 804 24 51 / hola@email.cat</h3>
+  </div>
+  <div class="dades_subscriptor">
+    <p><?php echo $_COOKIE['nom']." ".$_COOKIE['cognoms'] ?></br>
+    nº subscriptor/a: <?php echo $_COOKIE['subscriptor'] ?></p>
+  </div>
+  <div class="info_anoia">
+    <p>Aquesta targeta serveix per gaudir de tots els avantatges i
+      descomptes destinats als subscriptors. En poden gaudir també
+      familiars directes del titular.
+      En cas de pèrdua cal comunicar-ho al departament de subscriptors.
+      <h2>www.veuanoia.cat</h2></p>
 </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

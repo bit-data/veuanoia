@@ -1,0 +1,251 @@
+body, .body_carnet, .body_carnet_nou{
+/*  background-color: black;
+ height: auto;*/
+/*  width: auto;
+  margin: 0 auto;*/
+font-family: Verdana, 'Geneva', sans-serif;
+text-align: center;
+}
+#logo{
+/*background-color: red;*/
+}
+
+#main{
+/*margin-top: -5%;*/
+}
+
+.bt_menu{
+  margin: 10px 0;
+}
+
+.form-element{
+  margin: 10px 0px;
+}
+
+.input_form, .input_form_pass{
+  padding: 5px 0;
+}
+
+/*.input_cif{
+  margin-left: 4px;
+}*/
+
+.input_form {
+  margin-left: 10px;
+}
+
+
+.bt_mida, .bt_tancar{
+  width: 200px;
+  font-size: 20px;
+  margin: 5px 0;
+/*  margin: 0 auto;*/
+  background-color: #ff9400;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0;
+  margin-top: 10px;
+}
+
+.bt_tancar{
+  background-color: red;
+  color: black;
+}
+
+.bt_mida:hover{
+  color:black;
+}
+
+.bt_tancar:hover{
+  color:white;
+}
+
+/*.bt_mida_login{
+  width: 200px;
+  font-size: 20px;
+  margin-top: 10px;
+
+}*/
+
+footer{
+  /*background-color: green;*/
+  margin-top: 25px;
+  text-align: center;
+}
+
+ul{
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+
+
+.text_area {
+
+}
+/*estils carnet.php*/
+#carnet
+{
+  background-color: #ff9400;
+  width: 70%;
+  height: 400px;
+  margin-left: 15%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+/*  display: flex;*/
+  justify-content: center;
+}
+#telefon
+{
+/*  background-color: green;*/
+  width: 100%;
+  font-size: 20px;
+  padding-top: 1px;
+/*  align-self: flex-start;*/
+/*position:fixed;*/
+}
+#usuari
+{
+/*  background-color: blue;*/
+  width: 100%;
+  /*align-self: center;*/
+  font-size: 34px;
+  font-weight: bold;
+}
+
+#info
+{
+/*  background-color: grey;*/
+  padding: 0px 30px 0px 30px;
+    text-align: justify;
+}
+
+#info h1{
+/*  margin-top: -5px;*/
+  text-align: center;
+}
+
+.email{
+  padding-right: 65px;
+}
+
+.text{
+  padding-right: 50px;
+  vertical-align: 200%;
+}
+
+@media screen and (max-width: 285px) {
+    .text{
+      padding-right: 0px;
+      vertical-align: 0%;
+    }
+    .email{
+      padding-right: 0px;
+    }
+}
+
+
+.btn-primary{
+    background-color: #ff9400;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: black;
+}
+
+.btn-primary:active{
+    background-color: black;
+}
+
+.body_carnet, .body_carnet_nou{
+  /*background-color: #ff9400;*/
+  background-color: #feba00;
+}
+
+@media screen and (max-width: 449px) {
+.body_carnet_nou{
+  background-image: url("../images/carnet_port.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.body_carnet_nou p{
+  font-size: 22px;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+
+}
+}
+
+@media screen and (min-width: 450px) {
+  .body_carnet_nou{
+    background-image: url("../images/carnet_lands.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .body_carnet_nou p{
+    font-size: 20px;
+    position: absolute;
+    position: absolute;
+    top:77%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    /*background-color: green;*/
+  }
+  .col-md-4 {
+    width: 75%;
+  }
+}
+
+.carnet {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+/*  background-color: #ff9400;*/
+}
+
+.logo_carnet {
+/*  background-color: red;*/
+  width: 25%;
+  height: 35%;
+  float: left;
+  text-align: left;
+
+}
+.dades_anoia{
+  width: 75%;
+  height: 35%;
+  /*background-color: blue;*/
+  padding-top: 3%;
+  text-align: center;
+  float: left;
+  margin-left: -12.5%;
+
+}
+
+.dades_subscriptor {
+  background-color: green;
+  /*width: 100%;*/
+  width:100%;
+  /*clear: both;*/
+  font-size: 18px;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+
+}
+
+.info_anoia{
+  font-size: 12px;
+}
+
+/*.carnet_portrait{
+    background-image: url("../images/carnet_port.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%
+}*/
