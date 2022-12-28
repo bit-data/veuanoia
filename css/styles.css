@@ -1,4 +1,4 @@
-body, .body_carnet{
+body, .body_carnet, .body_carnet_nou{
 /*  background-color: black;
  height: auto;*/
 /*  width: auto;
@@ -157,8 +157,45 @@ ul{
     background-color: black;
 }
 
-.body_carnet{
-  background-color: #ff9400;
+.body_carnet, .body_carnet_nou{
+  /*background-color: #ff9400;*/
+  background-color: #feba00;
+}
+
+@media screen and (max-width: 449px) {
+.body_carnet_nou{
+  background-image: url("../images/carnet_port.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.body_carnet_nou p{
+  font-size: 22px;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+
+}
+}
+
+@media screen and (min-width: 450px) {
+  .body_carnet_nou{
+    background-image: url("../images/carnet_lands.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .body_carnet_nou p{
+    font-size: 20px;
+    position: absolute;
+    position: absolute;
+    top:77%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    /*background-color: green;*/
+  }
 }
 
 .carnet {
@@ -187,14 +224,25 @@ ul{
 
 }
 
-.dades_subscriptor{
-/*  background-color: green;*/
-  width: 100%;
-  clear: both;
-  font-size: 28px;
+.dades_subscriptor {
+  background-color: green;
+  /*width: 100%;*/
+  width:100%;
+  /*clear: both;*/
+  font-size: 18px;
   font-weight: bold;
+  display: grid;
+  place-content: center;
+
 }
 
 .info_anoia{
   font-size: 12px;
 }
+
+/*.carnet_portrait{
+    background-image: url("../images/carnet_port.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%
+}*/
