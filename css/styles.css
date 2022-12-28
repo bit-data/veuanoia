@@ -196,6 +196,9 @@ ul{
     width: 65%;
     /*background-color: green;*/
   }
+  .col-md-4 {
+    width: 75%;
+  }
 }
 
 .carnet {
