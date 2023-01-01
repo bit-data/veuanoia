@@ -78,10 +78,9 @@
     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
     <label for="floatingPassword">Password</label>
   </div>
-
   <div class="checkbox mb-3">
     <label>
-      <input type="checkbox" value="remember-me"> Recorda'm
+      <input type="checkbox" value="remember-me" required> Heu d'acceptar les cookies imprescindibles pel correcte funcionament de l'aplicació.
     </label>
   </div>
   <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Entrar</button>
