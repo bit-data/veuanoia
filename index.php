@@ -93,7 +93,7 @@
         <li>&copy; 2022 La Veu Anoia</li>
         <li><a href="">Política de privacitat</li></a>
         <li><a href="">Política de cookies</li></a>
-        <li>Developed by <a href="https://wwww.bit-data.es">Bit_Data</li></a>
+        <li>Developed by <a href="https://www.bit-data.es">Bit_Data</li></a>
       </ul></span>
     </div>
     <ul class="">
