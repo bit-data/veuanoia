@@ -13,8 +13,8 @@ if(!isset($_POST['nom_cognoms']) ||
 !isset($_POST['comentari'])) {
 
 // resposta error formulari
-echo "<b>Ocurrió un error y el formulario no ha sido enviado. </b><br />";
-echo "Por favor, vuelva atrás y verifique la información ingresada<br />";
+// echo "<b>Ocurrió un error y el formulario no ha sido enviado. </b><br />";
+header("Location: email_no_enviat.html");
 die();
 }
 
@@ -34,6 +34,7 @@ $headers = 'From: '.$email_from."\r\n".
 @mail($email_to, $email_subject, $email_message, $headers);
 
 //missatge d'enviament correcte
-echo "¡El formulario se ha enviado con éxito!";
+//echo "¡El formulario se ha enviado con éxito!";
+header("Location: email_enviat.html");
 }
 ?>
