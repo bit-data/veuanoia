@@ -72,7 +72,7 @@
     <a href="https://veuanoia.cat/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
     <form method="post">
-      <input type="submit" name="button1" class="bt_tancar" value="Tancar sessió" />
+      <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
     </form>
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
