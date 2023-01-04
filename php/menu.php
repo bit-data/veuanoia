@@ -111,6 +111,7 @@
             setcookie ("nom","",time()- (60*60*24*365), "/");
             setcookie ("cognoms","",time()- (60*60*24*365), "/");
             setcookie ("email","",time()- (60*60*24*365), "/");
+            setcookie ("subscriptor","",time()- (60*60*24*365),"/");
             header("Location: ../index.php");
         }
 ?>
