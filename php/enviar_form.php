@@ -7,9 +7,7 @@ $email_subject = "App club subscriptor";
 
 // Validació camps formulari
 if(!isset($_POST['nom_cognoms']) ||
-//!isset($_POST['cognoms']) ||
 !isset($_POST['email']) ||
-//!isset($_POST['telephone']) ||
 !isset($_POST['comentari'])) {
 
 // resposta error formulari
@@ -21,9 +19,8 @@ die();
 //Cos email
 $email_message = "Infromació del formulari de contacte:\n\n";
 $email_message .= "Subscriptor/a: " . $_POST['nom_cognoms'] . "\n";
-//$email_message .= "Apellido: " . $_POST['last_name'] . "\n";
 $email_message .= "E-mail: " . $_POST['email'] . "\n";
-//$email_message .= "Teléfono: " . $_POST['telephone'] . "\n";
+$email_message .= "Telèfon: " . $_POST['telefon'] . "\n";
 $email_message .= "Comentarios: " . $_POST['comentari'] . "\n\n";
 
 // Enviament de l'email

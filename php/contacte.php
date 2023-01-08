@@ -78,6 +78,10 @@
       <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="email" value="<?php { echo $_COOKIE["email"]; } ?>" required>
     </div>
     <div class="form-group">
+      <label for="exampleFormControlInput1">Telèfon</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="Telèfon" value="<?php { echo $_COOKIE["telefon"]; } ?>">
+    </div>
+    <div class="form-group">
       <label for="exampleFormControlTextarea1">Text</label>
       <textarea class="form-control" id="exampleFormControlTextarea1" name="comentari" rows="3" required></textarea>
     </div>
@@ -90,7 +94,7 @@
         <li>&copy; 2022 La Veu Anoia</li>
         <li><a href="">Política de privacitat</li></a>
         <li><a href="">Política de cookies</li></a>
-        <li>Developed by <a href="https://www.bit-data.es">Bit_Data</li></a>
+        <li>Developed by <a href="https://www.bit-data.es">Bit-Data</li></a>
       </ul></span>
     </div>
     <ul class="">

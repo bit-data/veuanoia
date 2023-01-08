@@ -69,7 +69,7 @@
     <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
     <h1 class="h3 mb-3 fw-normal">Hola <?php echo $_COOKIE['nom'] ?>!</h1>
     <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
-    <a href="https://veuanoia.cat/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
+    <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
     <form method="post">
       <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
@@ -81,7 +81,7 @@
             <li>&copy; 2022 La Veu Anoia</li>
             <li><a href="">Política de privacitat</li></a>
             <li><a href="">Política de cookies</li></a>
-            <li>Developed by <a href="https://www.bit-data.es">Bit_Data</li></a>
+            <li>Developed by <a href="https://www.bit-data.es">Bit-Data</li></a>
           </ul></span>
         </div>
         <ul class="">
@@ -112,6 +112,7 @@
             setcookie ("cognoms","",time()- (60*60*24*365), "/");
             setcookie ("email","",time()- (60*60*24*365), "/");
             setcookie ("subscriptor","",time()- (60*60*24*365),"/");
+            setcookie ("telefon","",time()- (60*60*24*365),"/");
             header("Location: ../index.php");
         }
 ?>

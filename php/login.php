@@ -24,6 +24,7 @@ else { //comprobem que el dni continua a la bbdd no l'han donat de baixa
     setcookie ("cognoms","",time()- (60*60*24*365), "/");
     setcookie ("email","",time()- (60*60*24*365), "/");
     setcookie ("subscriptor","",time()- (60*60*24*365), "/");
+    setcookie ("telefon","",time()- (60*60*24*365), "/");
     //header("Location: php/error_login.php");
   } else {
   //si hi ha cookie i el DNI continua a la BBDD carrèga el menú
@@ -53,6 +54,7 @@ if (isset($_POST['login'])) {
     $surname = $result['cognoms'];//guardar dades BBDD
     $email_sub = $result['email'];//guardar dades BBDD
     $num_sub = $result['num_subs'];//guardar dades BBDD
+    $telefon_sub = $result['telefon'];//guardar dades BBDD
   //  echo $passwordHash; //mostrar dades bbdd
 
   //bucle per comprobar si està a la bbdd i redirigir cap al menú o al error
@@ -75,6 +77,7 @@ if (isset($_POST['login'])) {
               setcookie ("cognoms",$surname,time()+ (60*60*24*365),"/");
               setcookie ("email",$email_sub,time()+ (60*60*24*365),"/");
               setcookie ("subscriptor",$num_sub,time()+ (60*60*24*365),"/");
+              setcookie ("telefon",$telefon_sub,time()+ (60*60*24*365),"/");
             }
             header("Location: php/menu.php");
             //echo  $_SESSION['num_subscriptor'] . "hola";
