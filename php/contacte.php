@@ -70,7 +70,7 @@
     <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
     <h1 class="h3 mb-3 fw-normal">Contacte</h1>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Subscrptor/a</label>
+      <label for="exampleFormControlInput1">Subscriptor/a</label>
       <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom i cognoms" name="nom_cognoms" value="<?php echo $_COOKIE['nom']." ".$_COOKIE['cognoms'] ?>" required>
     </div>
     <div class="form-group">
