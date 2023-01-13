@@ -7,7 +7,6 @@
     <meta name="author" content="">
     <meta name="generator" content="">
     <title>Login</title>
-    <?php include('functions.php') ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="../css/styles.css">
 <style>
@@ -71,16 +70,16 @@
     <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
     <h1 class="h3 mb-3 fw-normal">Contacte</h1>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Subscrptor/a</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom i cognoms" name="nom_cognoms" value="<?php echo $dencryption_name." ".$dencryption_surname?>" required>
+      <label for="exampleFormControlInput1">Subscriptor/a</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom i cognoms" name="nom_cognoms" value="<?php echo $_COOKIE['nom']." ".$_COOKIE['cognoms'] ?>" required>
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Email</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="email" value="<?php  echo $dencryption_email_sub ?>" required>
+      <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="email" value="<?php { echo $_COOKIE["email"]; } ?>" required>
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Telèfon</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="Telèfon" value="<?php  echo $dencryption_telefon_sub ?>">
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="Telèfon" value="<?php { echo $_COOKIE["telefon"]; } ?>">
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Text</label>
