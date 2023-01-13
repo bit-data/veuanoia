@@ -1,7 +1,7 @@
 <?php
 include('php/config.php');
+include('functions.php');
 session_start();
-
 //header ('cache-control: private');
 //bucle per comprobar si hi ha cookie prèvia
 
@@ -11,7 +11,8 @@ if(empty($_COOKIE["username"]))
 //si està buida continua al login
 }
 else { //comprobem que el dni continua a la bbdd no l'han donat de baixa
-  $dni_sub = $_COOKIE["username"];
+  echo "else ".$_COOKIE["dni"];
+  $dni_sub = $dencryption_username;
   $query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI='$dni_sub'");
 //  $query->bindParam("username", $username, PDO::PARAM_STR);
   $query->execute();
@@ -25,6 +26,7 @@ else { //comprobem que el dni continua a la bbdd no l'han donat de baixa
     setcookie ("email","",time()- (60*60*24*365), "/");
     setcookie ("subscriptor","",time()- (60*60*24*365), "/");
     setcookie ("telefon","",time()- (60*60*24*365), "/");
+
     //header("Location: php/error_login.php");
   } else {
   //si hi ha cookie i el DNI continua a la BBDD carrèga el menú
@@ -70,6 +72,7 @@ if (isset($_POST['login'])) {
     $encryption_num_sub = openssl_encrypt($num_sub,$ciphering,$encryption_key,$option,$encryption_iv);
     $encryption_telefon_sub = openssl_encrypt($telefon_sub,$ciphering,$encryption_key,$option,$encryption_iv);
     $encryption_dni_sub = openssl_encrypt($dni_sub,$ciphering,$encryption_key,$option,$encryption_iv);
+    $encryption_username = openssl_encrypt($username,$ciphering,$encryption_key,$option,$encryption_iv);
 
   //bucle per comprobar si està a la bbdd i redirigir cap al menú o al error
     if (!$result) {
@@ -92,7 +95,19 @@ if (isset($_POST['login'])) {
               setcookie ("email",$encryption_email_sub,time()+ (60*60*24*365),"/");
               setcookie ("subscriptor",$encryption_num_sub,time()+ (60*60*24*365),"/");
               setcookie ("telefon",$encryption_telefon_sub,time()+ (60*60*24*365),"/");
-              setcookie ("dni",$encryption_telefon_sub,time()+ (60*60*24*365),"/");
+              setcookie ("dni",$encryption_username,time()+ (60*60*24*365),"/");
+
+              $usuari = array(
+                "username_array" => $encryption_username,
+                "nom_array" => $encryption_name,
+                "cognom_array" => $encryption_surname,
+                "email_array" => $encryption_email_sub,
+                "subscriptor_array" => $encryption_num_sub,
+                "telefon_array" => $encryption_telefon_sub,
+                "dni_array" => $encryption_username,
+              );
+              setcookie ("usuari",json_encode($usuari),time()+ (60*60*24*365),"/");
+
             }
             header("Location: php/menu_encrypt.php");
             //echo  $_SESSION['num_subscriptor'] . "hola";

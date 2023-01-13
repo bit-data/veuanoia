@@ -69,9 +69,9 @@
   <main class="form-signin w-100 m-auto">
     <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
     <h1 class="h3 mb-3 fw-normal">Hola <?php echo $dencryption_name ?>!</h1>
-    <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
+    <a href="carnet_encrypt.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
     <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
-    <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
+    <a href="contacte_encrypt.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
     <form method="post">
       <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
     </form>

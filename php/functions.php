@@ -7,12 +7,19 @@
   $dencryption_key= "veuanoia";
   $dencryption_iv= '1234567890123456';
 
+  if(!empty($_COOKIE["dni"]))
+  {
   $dencryption_name = openssl_decrypt($_COOKIE['nom'],$ciphering,$dencryption_key,$option,$dencryption_iv);
   $dencryption_surname = openssl_decrypt($_COOKIE['cognoms'],$ciphering,$dencryption_key,$option,$dencryption_iv);
   $dencryption_email_sub = openssl_decrypt($_COOKIE['email'],$ciphering,$dencryption_key,$option,$dencryption_iv);
   $dencryption_telefon_sub = openssl_decrypt($_COOKIE["telefon"],$ciphering,$dencryption_key,$option,$dencryption_iv);
-  $dencryption_dni_sub = openssl_decrypt($_COOKIE["dni"],$ciphering,$dencryption_key,$option,$dencryption_iv);
+  $dencryption_username = openssl_decrypt($_COOKIE["dni"],$ciphering,$dencryption_key,$option,$dencryption_iv);
 
+  $usuari_decrypt = json_decode($_COOKIE['usuari'], true);
+  print_r ($usuari_decrypt);
+  $prova = json_decode($_COOKIE['usuari'].["0"], true);
+  echo $prova;
+}
 //Menu button
         if(array_key_exists('button1', $_POST)) {
             button1();
@@ -26,6 +33,7 @@
             setcookie ("email","",time()- (60*60*24*365), "/");
             setcookie ("subscriptor","",time()- (60*60*24*365),"/");
             setcookie ("telefon","",time()- (60*60*24*365),"/");
+            setcookie ("dni","",time()- (60*60*24*365),"/");
             header("Location: ../index.php");
         }
 ?>
