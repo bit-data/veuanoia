@@ -79,7 +79,7 @@
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Telèfon</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="Telèfon" value="<?php { echo $_COOKIE["telefon"]; } ?>">
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="Telèfon" value="<?php { echo $_COOKIE["telefon"]; } ?>">
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Text</label>
