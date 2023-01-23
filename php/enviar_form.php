@@ -17,11 +17,11 @@ die();
 }
 
 //Cos email
-$email_message = "Infromació del formulari de contacte:\n\n";
+$email_message = "Informació del formulari de contacte:\n\n";
 $email_message .= "Subscriptor/a: " . $_POST['nom_cognoms'] . "\n";
 $email_message .= "E-mail: " . $_POST['email'] . "\n";
 $email_message .= "Telèfon: " . $_POST['telefon'] . "\n";
-$email_message .= "Comentarios: " . $_POST['comentari'] . "\n\n";
+$email_message .= "Comentaris: " . $_POST['comentari'] . "\n\n";
 
 // Enviament de l'email
 $email_from = $_POST['email'];
