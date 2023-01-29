@@ -4,6 +4,7 @@
 
 require_once('ripcord/ripcord.php');
 
+//---->INICI CONNEXIÓ<--------
 // Set up the connection details
 $url = "https://veuanoiasubs.odoo.com";
 $db = "dsardai2t-veuanoiasubs-main-6880959";
@@ -19,7 +20,49 @@ $uid = $common->authenticate($db, $username, $password, array());
 // Create a new client for the objects API
 $models = ripcord::client("$url/xmlrpc/2/object");
 
-//---->FINS AQUÍ CONNEXIÓ<--------
+//---->END CONNEXIÓ<--------
+
+
+$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]);
+
+foreach ($sales as $sale) {
+    $codi_subscriptor = $sale['name'];
+    echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
+    //echo "Codi subscriptor: " . $sale['name'] . "<br>";
+
+    $nom_subcriptor = $sale['partner_id'][1];
+    echo "Nom: " . $nom_subcriptor . "<br>";
+    //echo "Nom: " . $sale['partner_id'][1] . "<br>";
+
+    $estat_subscripcio = $sale['stage_id'][1];
+    echo "Estat subscripció: " . $estat_subscripcio . "<br>";
+    //echo "Estat subscripció: " . $sale['stage_id'][1] . "<br>";
+
+    //id client a la taula subscriptor per agafar les dades dela taula client
+    $partner_id = $sale['partner_id'][0];
+    //echo "id_client ".$partner_id. "<br>";
+    $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
+    foreach ($partners as $partner) {
+
+    //exemple per mostra camp i per comparar nom al taula subscriptor
+    echo "Nom: " . $partner['name'] . "<br>";
+
+    $email_subscriptor = $partner['email'];
+    echo "Email: " . $email_subscriptor . "<br>";
+
+    $mobil_subscriptor = $partner['mobile'];
+    echo "mòbil: " . $mobil_subscriptor . "<br>";
+
+    $telefon_subscriptor = $partner['phone'];
+    echo "phone: " . $telefon_subscriptor . "<br>";
+
+    $cif_subscriptor = $partner['vat'];
+    echo "CIF: " . $cif_subscriptor . "<br>";
+    }
+    echo "<br>";
+}
+
+//---->Codi aprofitable<--------
 
 //Per buscar un id de subscriptor
 /*
@@ -59,25 +102,6 @@ foreach ($partners as $partner) {
     echo "CIF: " . $partner['vat'] . "<br>";
     echo "<br>";
 }*/
-
-$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]);
-
-foreach ($sales as $sale) {
-    echo "Codi subscriptor: " . $sale['name'] . "<br>";
-    echo "Nom: " . $sale['partner_id'][1] . "<br>";
-    echo "Estat subscripció: " . $sale['stage_id'][1] . "<br>";
-    $partner_id = $sale['partner_id'][0];
-    //echo "id_client ".$partner_id. "<br>";
-    $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
-    foreach ($partners as $partner) {
-    echo "Nom: " . $partner['name'] . "<br>";
-    echo "Email: " . $partner['email'] . "<br>";
-    echo "mòbil: " . $partner['mobile'] . "<br>";
-    echo "phone: " . $partner['phone'] . "<br>";
-    echo "CIF: " . $partner['vat'] . "<br>";
-    }
-    echo "<br>";
-}
 
 /*//no tenim permisos per veure les taules
 $tables = $models->execute_kw($db, $uid, $password,
