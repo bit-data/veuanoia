@@ -22,7 +22,7 @@ $models = ripcord::client("$url/xmlrpc/2/object");
 //---->FINS AQUÍ CONNEXIÓ<--------
 
 //Per buscar un id de subscriptor
-
+/*
 $sales_order_id = 627;
 //$sales_order_data = $models->execute_kw($db, $uid, $password, 'sale.order', 'read', array(array($sales_order_id)));
 $sales_order_data = $models->execute_kw($db, $uid, $password, 'sale.subscription', 'read', array(array($sales_order_id)));
@@ -42,13 +42,13 @@ echo 'id taula client: '.$partner_id.'<br>';
 $partners_dades = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
 
 foreach ($partners_dades as $partner) {
-    echo "Nombre: " . $partner['name'] . "<br>";
+    echo "Nom: " . $partner['name'] . "<br>";
     echo "Email: " . $partner['email'] . "<br>";
     echo "mòbil: " . $partner['mobile'] . "<br>";
     echo "phone: " . $partner['phone'] . "<br>";
     echo "CIF: " . $partner['vat'] . "<br>";
     echo "<br>";
-}
+}*/
 // per llistar les dades concretes de tots els clients
 /*$partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[]], ['fields' => ['name', 'email', 'mobile','vat']]);
 
@@ -60,36 +60,24 @@ foreach ($partners as $partner) {
     echo "<br>";
 }*/
 
-//print_r($partners);
-//$sales_order_data = $models->execute_kw($db, $uid, $password, 'sale.subscription', 'search', array(array()));
-// Print the results
-//print_r($sales_order_data);
+$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]);
 
-
-/*//array amb totes les dades sales.orders
-$sales_orders = $models->execute_kw($db, $uid, $password, 'sale.order', 'search', array(array()));
-
-// Print the results
-print_r($sales_orders);
-*/
-/*
-//array amb totes les dades res.partner
-// Use the client to call a method on the Odoo server
-$partners = $models->execute_kw($db, $uid, $password, 'res.partner', 'search', array(array()));
-
-// Print the results
-print_r($partners);
-//echo $partners[0]['name'].'<br>';
-*/
-
-/*//no tenim permis
-$tables = $models->execute_kw($db, $uid, $password,
-        'ir.model', 'search',
-        array(array(array('model', '=', 'res.partner'))));
-    foreach ($tables as $table) {
-        echo $table . "\n";
+foreach ($sales as $sale) {
+    echo "Codi subscriptor: " . $sale['name'] . "<br>";
+    echo "Nom: " . $sale['partner_id'][1] . "<br>";
+    echo "Estat subscripció: " . $sale['stage_id'][1] . "<br>";
+    $partner_id = $sale['partner_id'][0];
+    //echo "id_client ".$partner_id. "<br>";
+    $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
+    foreach ($partners as $partner) {
+    echo "Nom: " . $partner['name'] . "<br>";
+    echo "Email: " . $partner['email'] . "<br>";
+    echo "mòbil: " . $partner['mobile'] . "<br>";
+    echo "phone: " . $partner['phone'] . "<br>";
+    echo "CIF: " . $partner['vat'] . "<br>";
     }
-*/
+    echo "<br>";
+}
 
 /*//no tenim permisos per veure les taules
 $tables = $models->execute_kw($db, $uid, $password,
