@@ -44,7 +44,7 @@ foreach ($sales as $sale) {
     $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
     foreach ($partners as $partner) {
 
-    //exemple per mostra camp i per comparar nom al taula subscriptor
+    //exemple per mostra camp i per comparar nom amb la taula subscriptor per assegurar q es el mateix
     echo "Nom: " . $partner['name'] . "<br>";
 
     $email_subscriptor = $partner['email'];
@@ -60,6 +60,11 @@ foreach ($sales as $sale) {
     echo "CIF: " . $cif_subscriptor . "<br>";
     }
     echo "<br>";
+
+//bucle per detctar si esta acabada la subscripció
+    if (!($estat_subscripcio == "Closed")){
+
+    }
 }
 
 //---->Codi aprofitable<--------
