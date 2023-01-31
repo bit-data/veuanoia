@@ -3,7 +3,17 @@
 // Include the Ripcord library
 
 require_once('ripcord/ripcord.php');
-//include('../php/config.php');
+include('../php/config.php');
+
+// Create connection
+//$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$connection) {
+  die("Connection failed: " . mysqli_connect_error());
+} else {echo "connexió ok";}
+
+$sql = "INSERT INTO subscriptors_odoo VALUES ('',:num_subs,:id_partern,:nom,:dni,:email,:telefon,:mobil,:password)";
+
+$stmt = $connection->prepare($sql);
 
 //---->INICI CONNEXIÓ<--------
 // Set up the connection details
@@ -41,8 +51,8 @@ foreach ($sales as $sale) {
 
     //id client a la taula subscriptor per agafar les dades dela taula client
     $partner_id = $sale['partner_id'][0];
-    //echo "id_client ".$partner_id. "<br>";
-    $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
+    echo "id_client ".$partner_id. "<br>";
+  /*  $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
     foreach ($partners as $partner) {
 
     //exemple per mostra camp i per comparar nom amb la taula subscriptor per assegurar q es el mateix
@@ -59,15 +69,29 @@ foreach ($sales as $sale) {
 
     $cif_subscriptor = $partner['vat'];
     echo "CIF: " . $cif_subscriptor . "<br>";
-    }
+
     echo "<br>";
 
 //bucle per detctar si esta acabada la subscripció
+    }
     if (!($estat_subscripcio == "Closed")){
 
-    //  $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor','$partner_id','$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor','$cif_subscriptor')";
-    //  $result = mysqli_query($conn, $sql);
-    }
+      //$sql = "SELECT * FROM subscriptors_odoo";
+        $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor','$cif_subscriptor')";
+
+        $stmt->bindParam(':num_subs', $codi_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $nom_subcriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':telefon', $telefon_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':mobil', $mobil_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+    $connection = null;
+  }*/
 }
 
 //---->Codi aprofitable<--------
