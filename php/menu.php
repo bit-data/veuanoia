@@ -64,6 +64,11 @@
 
 </style>
 <link href="../css/signin.css" rel="stylesheet">
+<?php
+$date_now = date('d-m-Y');
+$date_past = strtotime('-15 day', strtotime($date_now));
+$date_past = date('d-m-Y', $date_past);
+?>
 </head>
 <body class="text-center">
   <main class="form-signin w-100 m-auto">
@@ -72,6 +77,7 @@
     <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
     <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
+    <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Hemeroteca fins <?php echo $date_past?></button></a>
     <form method="post">
       <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
     </form>
