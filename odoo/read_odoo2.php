@@ -34,7 +34,10 @@ $models = ripcord::client("$url/xmlrpc/2/object");
 //---->END CONNEXIÓ<--------
 
 
-$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]);
+//$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]);
+//$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', '=', 'VEU05']]], ['fields' => ['name','partner_id','stage_id']]);
+$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', 'like', 'VEU%']]], ['fields' => ['name','partner_id','stage_id']]);
+
 
 foreach ($sales as $sale) {
     $codi_subscriptor = $sale['name'];
@@ -52,7 +55,7 @@ foreach ($sales as $sale) {
     //id client a la taula subscriptor per agafar les dades dela taula client
     $partner_id = $sale['partner_id'][0];
     echo "id_client ".$partner_id. "<br>";
-  /*  $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
+    $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
     foreach ($partners as $partner) {
 
     //exemple per mostra camp i per comparar nom amb la taula subscriptor per assegurar q es el mateix
@@ -74,7 +77,7 @@ foreach ($sales as $sale) {
 
 //bucle per detctar si esta acabada la subscripció
     }
-    if (!($estat_subscripcio == "Closed")){
+    if (($estat_subscripcio == "In Progress")){
 
       //$sql = "SELECT * FROM subscriptors_odoo";
         $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor','$cif_subscriptor')";
@@ -91,7 +94,7 @@ foreach ($sales as $sale) {
         $stmt->execute();
 
     $connection = null;
-  }*/
+  }
 }
 
 //---->Codi aprofitable<--------
