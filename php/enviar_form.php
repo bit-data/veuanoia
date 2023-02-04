@@ -18,8 +18,10 @@ die();
 
 //Cos email
 $email_message = "Informació del formulari de contacte:\n\n";
-$email_message .= "Subscriptor/a: " . $_POST['nom_cognoms'] . "\n";
+$email_message .= "Subscriptor/a: " . $_POST['num_sub'] . "\n";
+$email_message .= "Nom: " . $_POST['nom_cognoms'] . "\n";
 $email_message .= "E-mail: " . $_POST['email'] . "\n";
+$email_message .= "Mòbil: " . $_POST['mobil'] . "\n";
 $email_message .= "Telèfon: " . $_POST['telefon'] . "\n";
 $email_message .= "Comentaris: " . $_POST['comentari'] . "\n\n";
 

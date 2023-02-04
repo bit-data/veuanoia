@@ -18,10 +18,11 @@
 */
 
   $dencryption_name = openssl_decrypt($usuari_decrypt['nom_array'],$ciphering,$dencryption_key,$option,$dencryption_iv);
-  $dencryption_surname = openssl_decrypt($usuari_decrypt['cognoms_array'],$ciphering,$dencryption_key,$option,$dencryption_iv);
+  $dencryption_mobil = openssl_decrypt($usuari_decrypt['mobil_array'],$ciphering,$dencryption_key,$option,$dencryption_iv);
   $dencryption_email_sub = openssl_decrypt($usuari_decrypt['email_array'],$ciphering,$dencryption_key,$option,$dencryption_iv);
   $dencryption_telefon_sub = openssl_decrypt($usuari_decrypt["telefon_array"],$ciphering,$dencryption_key,$option,$dencryption_iv);
   $dencryption_username = openssl_decrypt($usuari_decrypt["dni_array"],$ciphering,$dencryption_key,$option,$dencryption_iv);
+  $dencryption_num_sub = openssl_decrypt($usuari_decrypt["subscriptor_array"],$ciphering,$dencryption_key,$option,$dencryption_iv);
 
 }
 //Menu button

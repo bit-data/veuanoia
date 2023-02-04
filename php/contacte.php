@@ -71,16 +71,24 @@
     <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
     <h1 class="h3 mb-3 fw-normal">Contacte</h1>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Subscrptor/a</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom i cognoms" name="nom_cognoms" value="<?php echo $dencryption_name." ".$dencryption_surname?>" required>
+      <label for="exampleFormControlInput1">Nº subscriptor/a</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="número subscriptor/a" name="num_sub" value="<?php echo $dencryption_num_sub ?>" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Nom</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="nom i cognoms" name="nom_cognoms" value="<?php echo $dencryption_name ?>" required>
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Email</label>
       <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="email" value="<?php  echo $dencryption_email_sub ?>" required>
     </div>
     <div class="form-group">
+      <label for="exampleFormControlInput1">Mòbil</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="mobil" placeholder="600 000 000" value="<?php  echo $dencryption_mobil ?>">
+    </div>
+    <div class="form-group">
       <label for="exampleFormControlInput1">Telèfon</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="Telèfon" value="<?php  echo $dencryption_telefon_sub ?>">
+      <input type="text" class="form-control" id="exampleFormControlInput1" name="telefon" placeholder="93 000 00 00" value="<?php  echo $dencryption_telefon_sub ?>">
     </div>
     <div class="form-group">
       <label for="exampleFormControlTextarea1">Text</label>

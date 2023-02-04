@@ -38,8 +38,8 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    //$query = $connection->prepare("SELECT * FROM subscriptors WHERE USERNAME=:username");
-    $query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI=:username");
+    $query = $connection->prepare("SELECT * FROM subscriptors_odoo WHERE DNI=:username");
+    //$query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI=:username");
     $query->bindParam("username", $username, PDO::PARAM_STR);
     $query->execute();
 
@@ -48,10 +48,11 @@ if (isset($_POST['login'])) {
 
     $passwordHash = $result['password'];//guardar dades BBDD
     $name = $result['nom'];//guardar dades BBDD
-    $surname = $result['cognoms'];//guardar dades BBDD
+  //  $surname = $result['mobil'];//guardar dades BBDD
     $email_sub = $result['email'];//guardar dades BBDD
     $num_sub = $result['num_subs'];//guardar dades BBDD
     $telefon_sub = $result['telefon'];//guardar dades BBDD
+    $surname = $result['mobil'];//guardar dades BBDD
     $dni_sub = $result['dni'];
 
 
@@ -91,7 +92,7 @@ if (isset($_POST['login'])) {
               $usuari = array(
                 "username_array" => $encryption_username,
                 "nom_array" => $encryption_name,
-                "cognoms_array" => $encryption_surname,
+                "mobil_array" => $encryption_surname,
                 "email_array" => $encryption_email_sub,
                 "subscriptor_array" => $encryption_num_sub,
                 "telefon_array" => $encryption_telefon_sub,
