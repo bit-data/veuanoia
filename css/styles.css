@@ -37,6 +37,10 @@ text-align: center;
 .btn-primary:active{
     background-color: black;
 }
+
+.heme_data{
+  font-size: 16px;
+}
 /*-----Style menu (finish)-----*/
 
 

@@ -65,9 +65,13 @@
 </style>
 <link href="../css/signin.css" rel="stylesheet">
 <?php
-$date_now = date('d-m-Y');
-$date_past = strtotime('-15 day', strtotime($date_now));
-$date_past = date('d-m-Y', $date_past);
+//$currentDate = strtotime("February 03, 2023");//per provar dates concretes
+$currentDate = time();
+$fifteenDaysAgo = strtotime("-15 day", $currentDate);
+$dayOfWeek = date('w', $fifteenDaysAgo);
+$daysToPreviousFriday = ($dayOfWeek >= 5) ? $dayOfWeek - 5 : $dayOfWeek - 5 + 7;
+$previousFriday = strtotime("-$daysToPreviousFriday day", $fifteenDaysAgo);
+$date_past = date('d-m-Y', $previousFriday);
 ?>
 </head>
 <body class="text-center">
@@ -77,7 +81,7 @@ $date_past = date('d-m-Y', $date_past);
     <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
     <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
-    <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Hemeroteca fins <?php echo $date_past?></button></a>
+    <a href="https://veuanoia.cat/hemeroteca/"><button class="w-100 btn btn-lg btn-primary bt_menu">Hemeroteca <br><span class="heme_data">fins <?php echo $date_past?></span></button></a>
     <form method="post">
       <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
     </form>
