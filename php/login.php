@@ -1,5 +1,5 @@
 <?php
-include('php/config.php');
+include('config.php');
 include('functions.php');
 session_start();
 //header ('cache-control: private');
@@ -77,11 +77,6 @@ if (isset($_POST['login'])) {
     } else {
         //if (password_verify($password, $result['PASSWORD'])) {
 
-        if ($password == $dni_sub)
-        {
-          //Substituir per pagina amb canvi de contrasenya
-        }
-        else {
 
         if ($password == $passwordHash) {
             //$_SESSION['num_subscriptor'] = $result['num_subs'];
@@ -110,14 +105,19 @@ if (isset($_POST['login'])) {
               setcookie ("usuari",json_encode($usuari),time()+ (60*60*24*365),"/");
 
             }
+            if ($password == $dni_sub)
+            {
+            //  header("Location: php/new_password.php");
+            }//end if password dni
+            else {
             header("Location: php/menu.php");
-            //echo  $_SESSION['num_subscriptor'] . "hola";
+          }//end else password dni
 
-        } else {
+        }//end if password bbdd
+         else {
             //echo '<p class="error">Username password combination is wrong!</p>';
             header("Location: php/error_login.html");
         }//end else
-    }//end else else if $result
   }//End else if $result
 }//End if_isset_POST
 ?>
