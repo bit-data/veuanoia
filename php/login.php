@@ -76,6 +76,13 @@ if (isset($_POST['login'])) {
         header("Location: php/error_login.html");
     } else {
         //if (password_verify($password, $result['PASSWORD'])) {
+
+        if ($password == $dni_sub)
+        {
+          //Substituir per pagina amb canvi de contrasenya
+        }
+        else {
+
         if ($password == $passwordHash) {
             //$_SESSION['num_subscriptor'] = $result['num_subs'];
             //echo '<p class="success">Congratulations, you are logged in!</p>';
@@ -109,7 +116,8 @@ if (isset($_POST['login'])) {
         } else {
             //echo '<p class="error">Username password combination is wrong!</p>';
             header("Location: php/error_login.html");
-        }
-    }
-}
+        }//end else
+    }//end else else if $result
+  }//End else if $result
+}//End if_isset_POST
 ?>
