@@ -3,6 +3,19 @@
 // Include the Ripcord library
 
 require_once('ripcord/ripcord.php');
+include('../php/config.php');
+
+// Create connection
+//$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$connection) {
+  die("Connection failed: " . mysqli_connect_error());
+} else {echo "connexió ok";}
+
+$sql = "INSERT INTO subscriptors_odoo VALUES ('',:num_subs,:id_partern,:nom,:dni,:email,:telefon,:mobil)";
+$sql2 = "INSERT INTO subscriptors_passwords VALUES (:id_partern,:dni,:password)";
+
+$stmt = $connection->prepare($sql);
+$stmt2 = $connection->prepare($sql2);
 
 //---->INICI CONNEXIÓ<--------
 // Set up the connection details
@@ -23,7 +36,10 @@ $models = ripcord::client("$url/xmlrpc/2/object");
 //---->END CONNEXIÓ<--------
 
 
-$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]);
+$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]); //sql 500 registres unique cif
+//$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', '=', 'VEU05']]], ['fields' => ['name','partner_id','stage_id']]);
+//$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', 'like', 'VEU%']]], ['fields' => ['name','partner_id','stage_id']]); //sql 497 registres unique cif
+
 
 foreach ($sales as $sale) {
     $codi_subscriptor = $sale['name'];
@@ -40,7 +56,7 @@ foreach ($sales as $sale) {
 
     //id client a la taula subscriptor per agafar les dades dela taula client
     $partner_id = $sale['partner_id'][0];
-    //echo "id_client ".$partner_id. "<br>";
+    echo "id_client ".$partner_id. "<br>";
     $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
     foreach ($partners as $partner) {
 
@@ -58,13 +74,35 @@ foreach ($sales as $sale) {
 
     $cif_subscriptor = $partner['vat'];
     echo "CIF: " . $cif_subscriptor . "<br>";
-    }
+
     echo "<br>";
 
 //bucle per detctar si esta acabada la subscripció
-    if (!($estat_subscripcio == "Closed")){
-
     }
+    if (($estat_subscripcio == "In Progress")){
+
+      //$sql = "SELECT * FROM subscriptors_odoo";
+        $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
+        $sql2 = "INSERT INTO subscriptors_passwords VALUES ($partner_id,'$cif_subscriptor','$cif_subscriptor')";
+
+        $stmt->bindParam(':num_subs', $codi_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+        $stmt->bindParam(':nom', $nom_subcriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':telefon', $telefon_subscriptor, PDO::PARAM_STR);
+        $stmt->bindParam(':mobil', $mobil_subscriptor, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $stmt2->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+        $stmt2->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+        $stmt2->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
+
+        $stmt2->execute();
+
+    $connection = null;
+  }
 }
 
 //---->Codi aprofitable<--------
