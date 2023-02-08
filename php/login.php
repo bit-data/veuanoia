@@ -104,14 +104,15 @@ if (isset($_POST['login'])) {
               //cookie amb array
               setcookie ("usuari",json_encode($usuari),time()+ (60*60*24*365),"/");
 
-            }
-            if ($password == $dni_sub)
-            {
-            //  header("Location: php/new_password.php");
-            }//end if password dni
-            else {
-            header("Location: php/menu.php");
-          }//end else password dni
+              if ($password == $dni_sub)
+              {
+                header("Location: php/new_password.php");
+              }//end if password dni
+              else {
+                header("Location: php/menu.php");
+            }//end else password dni
+          }//end else emptu_Post_username
+
 
         }//end if password bbdd
          else {
@@ -120,4 +121,5 @@ if (isset($_POST['login'])) {
         }//end else
   }//End else if $result
 }//End if_isset_POST
+
 ?>

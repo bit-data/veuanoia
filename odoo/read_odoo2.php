@@ -12,8 +12,10 @@ if (!$connection) {
 } else {echo "connexió ok";}
 
 $sql = "INSERT INTO subscriptors_odoo VALUES ('',:num_subs,:id_partern,:nom,:dni,:email,:telefon,:mobil,:password)";
+$sql2 = "INSERT INTO subscriptors_password VALUES (:id_partern,:password)";
 
 $stmt = $connection->prepare($sql);
+$stmt2 = $connection->prepare($sql2);
 
 //---->INICI CONNEXIÓ<--------
 // Set up the connection details
@@ -92,6 +94,13 @@ foreach ($sales as $sale) {
         $stmt->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
 
         $stmt->execute();
+
+        $sql2 = "INSERT INTO subscriptors_password VALUES ($partner_id,'$cif_subscriptor')";
+
+        $stmt2->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+        $stmt2->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
+
+        $stmt2->execute();
 
     $connection = null;
   }
