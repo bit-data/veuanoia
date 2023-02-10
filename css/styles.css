@@ -3,6 +3,18 @@ font-family: Verdana, 'Geneva', sans-serif;
 text-align: center;
 }
 
+/*-----Selecció inicial (initial)-----*/
+
+.linia {
+  margin-top: 15%;
+}
+.segon_text{
+  margin-top: -25px;
+}
+
+/*-----Selecció inicial (final)-----*/
+
+
 /*-----Style menu i botons (initial)-----*/
 
 .bt_menu{
@@ -28,6 +40,7 @@ text-align: center;
 .btn-primary{
     background-color: #ff9400;
     border-color: black;
+    margin-bottom: 10px;
 }
 
 .btn-primary:hover{

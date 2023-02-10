@@ -8,10 +8,12 @@
     <meta name="generator" content="">
     <title>Login</title>
     <?php
-    include('php/login.php');
+
+    include('oblit_password.php');
+
     ?>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="css/styles.css">
+<link rel="stylesheet" type="text/css" href="../css/styles.css">
 <style>
   .bd-placeholder-img {
     font-size: 1.125rem;
@@ -64,31 +66,29 @@
     -webkit-overflow-scrolling: touch;
   }
 </style>
-<link href="css/signin.css" rel="stylesheet">
+<link href="../css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center">
 
 <main class="form-signin w-100 m-auto">
-<form method="post">
-  <img class="mb-4" src="images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
-  <h1 class="h3 mb-3 fw-normal">Inici de sessió</h1>
-
+<form method="post" action="oblit_password.php">
+  <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
+  <h1 class="h3 mb-3 fw-normal">Canvi contrasenya</h1>
+  <p>Si has oblidat la teva contrasenya la pots canviar aquí</p>
   <div class="form-floating">
-    <input type="text" class="form-control" id="floatingInput" placeholder="DNI/CIF" name="username" pattern="[a-zA-Z0-9]+" required >
-    <label for="floatingInput">DNI/CIF</label>
+    <input type="text" class="form-control" id="floatingPassword" placeholder="CIF/DNI" name="oblit_dni" required>
+    <label for="floatingPassword">CIF/DNI</label>
   </div>
   <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
-    <label for="floatingPassword">Password</label>
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Nou password" name="nou_password" required>
+    <label for="floatingPassword">Nou password</label>
   </div>
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me" required> Heu d'acceptar les cookies imprescindibles pel correcte funcionament de l'aplicació.
-    </label>
+  <div class="form-floating">
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Repeteix password" name="repeteix_password" required>
+    <label for="floatingPassword">Repeteix Password</label>
   </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Entrar</button>
+  <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Canviar</button>
 </form>
-<p>Si has oblidat la teva contrasenya fes click <a href="php/forgot_password.php">aquí</a>
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex align-items-center">
@@ -100,11 +100,11 @@
       </ul></span>
     </div>
     <ul class="">
-      <li class="ms-3"><a class="text-muted" href="https://twitter.com/veuanoia"><img src="images/xs/twitter.svg" class="bi" width="24" height="24"></a></li>
-      <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/veuanoia/"><img src="images/xs/instagram.svg" class="bi" width="24" height="24"></a></li>
-      <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/VeuAnoia/"><img src="images/xs/facebook.svg" class="bi" width="24" height="24"></a></li>
-      <li class="ms-3"><a class="text-muted" href="https://www.linkedin.com/company/la-veu-de-l'anoia/"><img src="images/xs/linkedin.svg" class="bi" width="24" height="24"></a></li>
-      <li class="ms-3"><a class="text-muted" href="https://www.youtube.com/@laveudelanoia9951"><img src="images/xs/youtube.svg" class="bi" width="24" height="24"></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://twitter.com/veuanoia"><img src="../images/xs/twitter.svg" class="bi" width="24" height="24"></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/veuanoia/"><img src="../images/xs/instagram.svg" class="bi" width="24" height="24"></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.facebook.com/VeuAnoia/"><img src="../images/xs/facebook.svg" class="bi" width="24" height="24"></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.linkedin.com/company/la-veu-de-l'anoia/"><img src="../images/xs/linkedin.svg" class="bi" width="24" height="24"></a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.youtube.com/@laveudelanoia9951"><img src="../images/xs/youtube.svg" class="bi" width="24" height="24"></a></li>
   </ul>
   </footer>
 </main>

@@ -13,7 +13,7 @@ if(empty($_COOKIE["usuari"]))
 else { //comprobem que el dni continua a la bbdd no l'han donat de baixa
 //  echo "else ".$_COOKIE["dni"];
   $dni_sub = $dencryption_username;
-  $query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI='$dni_sub'");
+  $query = $connection->prepare("SELECT * FROM subscriptors_odoo WHERE DNI='$dni_sub'");
 //  $query->bindParam("username", $username, PDO::PARAM_STR);
   $query->execute();
   $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -38,7 +38,9 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = $connection->prepare("SELECT * FROM subscriptors_odoo WHERE DNI=:username");
+    //$query = $connection->prepare("SELECT * FROM subscriptors_odoo WHERE DNI=:username");
+    $query = $connection->prepare("SELECT * FROM subscriptors_odoo, subscriptors_passwords WHERE subscriptors_odoo.dni=:username AND subscriptors_odoo.dni=subscriptors_passwords.dni");
+    //SELECT password FROM subscriptors_odoo, subscriptors_passwords WHERE subscriptors_odoo.dni='A08008849' AND subscriptors_odoo.dni=subscriptors_passwords.dni;
     //$query = $connection->prepare("SELECT * FROM subscriptors WHERE DNI=:username");
     $query->bindParam("username", $username, PDO::PARAM_STR);
     $query->execute();
@@ -55,6 +57,8 @@ if (isset($_POST['login'])) {
     $surname = $result['mobil'];//guardar dades BBDD
     $dni_sub = $result['dni'];
 
+    echo "hola".$dni_sub;
+    echo "a10";
 
     //per encriptar les dades recueprades i guardar-les ales cookies
     $ciphering = "AES-128-CTR";
