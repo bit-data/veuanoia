@@ -72,10 +72,10 @@ ul{
 /*@media screen and (max-width: 449px) {*/
 .body_carnet_nou{
   /*background-image: url("../images/carnet_port.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;*/
+  background-repeat: no-repeat;*/
+  background-size: 250%;
   background-image: url("../images/background.png");
-  /*background-repeat: repeat;*/
+  background-repeat: repeat;
 }
 
 .body_carnet_nou p{
@@ -86,17 +86,21 @@ ul{
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
+  font-family: "Poppins Light", "DinPro Light", "Century Gothic";
 
   }
 
   .carnet_top{
     position: absolute;
-    top:50px;
+    top:75px;
     left: 50%;
     transform: translate(-50%, 0%);
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
+  }
+
+  .cantonada{
+    position: absolute;
+    top: 0px;
+    left: 0px;
   }
 /*}*/
 
