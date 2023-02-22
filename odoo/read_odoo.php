@@ -19,10 +19,11 @@ $stmt2 = $connection->prepare($sql2);
 
 //---->INICI CONNEXIÓ<--------
 // Set up the connection details
-$url = "https://veuanoiasubs.odoo.com";
-$db = "dsardai2t-veuanoiasubs-main-6880959";
+
+$url = "https://publicacionsanoia.odoo.com";
+$db = "dsardai2t-publicacionsanoia-main-4330105";
 $username = "alberto.sanchez@bit-data.es";
-$password = "*Bit-Data19";
+$password = "BitData!!2023";
 
 // Create a new Ripcord client
 $common = ripcord::client("$url/xmlrpc/2/common");
