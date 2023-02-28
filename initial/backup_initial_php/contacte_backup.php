@@ -30,8 +30,8 @@
 </div>
 <footer>
     <ul>
-      <li><a href="">Política de privacitat</li></a>
-      <li><a href="">Política de cookies</li></a>
+      <li><a href="https://veuanoia.cat/politica-de-privacitat/">Política de privacitat</li></a>
+      <li><a href="https://veuanoia.cat/politica-de-cookies/">Política de cookies</li></a>
       <li>App desenvolupada per <a href="https://wwww.bit-data.es">Bit_Data</li></a>
     </ul>
 </footer>
