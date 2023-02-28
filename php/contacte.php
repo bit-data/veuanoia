@@ -100,7 +100,7 @@
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex align-items-center">
       <span class="mb-3 mb-md-0 text-muted"><ul>
-        <li>&copy; 2022 La Veu Anoia</li>
+        <li>&copy; 2023 La Veu Anoia</li>
         <li><a href="https://veuanoia.cat/politica-de-privacitat/">Política de privacitat</li></a>
         <li><a href="https://veuanoia.cat/politica-de-cookies/">Política de cookies</li></a>
         <li>Developed by <a href="https://www.bit-data.es">Bit-Data</li></a>
