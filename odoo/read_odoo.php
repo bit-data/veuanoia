@@ -22,8 +22,8 @@ $stmt2 = $connection->prepare($sql2);
 
 $url = "https://publicacionsanoia.odoo.com";
 $db = "dsardai2t-publicacionsanoia-main-4330105";
-$username = "alberto.sanchez@bit-data.es";
-$password = "BitData!!2023";
+$username = "club@veuanoia.cat";
+$password = "VeuAnoia2022";
 
 // Create a new Ripcord client
 $common = ripcord::client("$url/xmlrpc/2/common");
