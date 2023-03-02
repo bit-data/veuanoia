@@ -2,7 +2,7 @@
 if(isset($_POST['email'])) {
 
 //email i subject
-$email_to = "info@bit-data.es";
+$email_to = "club@veuanoia.cat";
 $email_subject = "App club subscriptor";
 
 // Validació camps formulari
