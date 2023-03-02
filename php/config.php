@@ -1,6 +1,6 @@
 <?php
 define('USER', 'ddb199657');
-define('PASSWORD', '6ce.BM*u@VI)');
+define('PASSWORD', '^]9X!#@-NB1w');
 define('HOST', 'bbdd.clubveuanoia.es');
 define('DATABASE', 'ddb199657');
 

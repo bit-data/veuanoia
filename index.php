@@ -72,15 +72,17 @@
 <form method="post">
   <img class="mb-4" src="images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
   <h1 class="h3 mb-3 fw-normal">Inici de sessió</h1>
-
   <div class="form-floating">
     <input type="text" class="form-control" id="floatingInput" placeholder="DNI/CIF" name="username" pattern="[a-zA-Z0-9]+" required >
     <label for="floatingInput">DNI/CIF</label>
   </div>
   <div class="form-floating">
-    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
-    <label for="floatingPassword">Password</label>
+    <input type="password" class="form-control" id="floatingPassword" placeholder="Passwords" name="password" required>
+    <label for="floatingPassword">Password*</label>
   </div>
+  <div class="checkbox mb-3">
+  <em>*La primera vegada el password és el teu DNI/CIF</em>
+</div>
   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me" required> Heu d'acceptar les cookies imprescindibles pel correcte funcionament de l'aplicació.
