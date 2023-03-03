@@ -90,7 +90,8 @@
   </div>
   <button class="w-100 btn btn-lg btn-primary" type="submit" name="login" value="login">Entrar</button>
 </form>
-<p>Si has oblidat la teva contrasenya fes click <a href="php/forgot_password.php">aquí</a>
+<p>Si has oblidat la teva contrasenya fes click <a href="php/forgot_password.php">aquí</a></p>
+<em>Pots fer-te subscriptor/a <a href="https://clubveuanoia.cat/">aquí</a></em>
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex align-items-center">

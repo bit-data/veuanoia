@@ -71,6 +71,7 @@
   <p class="h3 mb-3 fw-normal linia"></p>
   <a href="index.php"><img class="mb-4 segon_logo" src="images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228"></a>
   <h1 class="h3 mb-3 fw-normal segon_text"><a href="index.php">Àrea privada del subscriptor/a</a></h1>
+  <em>Pots fer-te subscriptor/a <a href="https://clubveuanoia.cat/">aquí</a></em>
 </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
