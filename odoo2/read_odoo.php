@@ -93,57 +93,58 @@ if (!$response->faultCode()) {
          $partner_id = $result['partner_id'][0]->scalarval();
          echo "id_client ".$partner_id. "<br>";
 
-         $partner_request = new xmlrpcmsg('execute_kw', array(
-          new xmlrpcval($db, 'string'),
-          new xmlrpcval($uid, 'int'),
-          new xmlrpcval($password, 'string'),
-          new xmlrpcval('res.partner', 'string'),
-          new xmlrpcval('search_read', 'string'),
-          new xmlrpcval(array(
-             new xmlrpcval(array(
-                new xmlrpcval('id', 'string'),
-                new xmlrpcval('=', 'string'),
-                new xmlrpcval($partner_id, 'int')
-             ), 'array') // Search domain
-          ), 'array'),
-          new xmlrpcval(array(
-             new xmlrpcval('name', 'string'),
-             new xmlrpcval('email', 'string'),
-             new xmlrpcval('mobile', 'string'),
-             new xmlrpcval('phone', 'string'),
-             new xmlrpcval('vat', 'string')
-          ), 'array') // Fields to retrieve
-       ));
+       // Crear una solicitud XML-RPC para la función "execute_kw" en la tabla "res.partner"
+              $request_partner = new xmlrpcmsg('execute_kw', array(
+                 new xmlrpcval($db, 'string'),
+                 new xmlrpcval($uid, 'int'),
+                 new xmlrpcval($password, 'string'),
+                 new xmlrpcval('res.partner', 'string'),
+                 new xmlrpcval('search_read', 'string'),
+                 new xmlrpcval(
+                    array(
+                       new xmlrpcval(
+                          array(
+                             new xmlrpcval('id', 'string'),
+                             new xmlrpcval('=', 'string'),
+                             new xmlrpcval($partner_id, 'int')
+                          ), 'array'
+                       )
+                    ), 'array'
+                 ),
+                 new xmlrpcval(
+                    array(
+                       new xmlrpcval('name', 'string'),
+                       new xmlrpcval('email', 'string'),
+                       new xmlrpcval('mobile', 'string'),
+                       new xmlrpcval('phone', 'string'),
+                       new xmlrpcval('vat', 'string')
+                    ), 'array'
+                 )
+              ));
 
-       // Send the partner request to the server and get the response
-       $response_partner = $client->send($partner_request);
+              // Enviar la solicitud al servidor y obtener la respuesta
+              $response_partner = $client->send($request_partner);
 
-       // Check that the server's response is valid
-       if (!$response_partner->faultCode()) {
-           // Get the results from the response
-           $value_partner = $response_partner->value();
-           if ($value_partner->kindOf() == 'array') {
-               $partners = $value_partner->scalarval();
-               foreach ($partners as $partner) {
-                   // Show the partner information
-                   echo "hola";
-                   echo "Nom: " . $partner['name']->scalarval() . "<br>";
-                   echo "Email: " . $partner['email']->scalarval . "<br>";
+              // Verificar que la respuesta del servidor es válida
+              if (!$response_partner->faultCode()) {
+                 // Obtener los resultados de la respuesta
+                 $value_partner = $response_partner->value();
+                 if ($value_partner->kindOf() == 'array') {
+                    $partners = $value_partner->scalarval();
+                    foreach ($partners as $partner) {
+                       // Mostrar el campo "vat" para cada socio
+                       $cif_subscriptor = $partner['vat'];
+                       echo "CIF: " . $cif_subscriptor . "<br>";
+                       echo "<br>";
 
-                        $mobil_subscriptor = $partner['mobile']->scalarval();
-                        echo "mòbil: " . $mobil_subscriptor . "<br>";
-
-                        $telefon_subscriptor = $partner['phone']->scalarval();
-                        echo "phone: " . $telefon_subscriptor . "<br>";
-
-                        $cif_subscriptor = $partner['vat']->scalarval();
-                        echo "CIF: " . $cif_subscriptor . "<br>";
-
-                        echo "<br>";
-         //bucle per detctar si esta acabada la subscripció
-             }
-      }
- } }}}
+                       // Bucle para detectar si la suscripción ha terminado
+                       // ...
+                    }
+                 }
+              }
+           }
+        }
+     }
   /* } else {
       echo 'Error: la respuesta del servidor no es un array.';
    }
@@ -161,7 +162,7 @@ if (!$response->faultCode()) {
 //---->END CONNEXIÓ<--------
 
 
-$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]); //sql 500 registres unique cif
+/*$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]); //sql 500 registres unique cif
 //$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', '=', 'VEU05']]], ['fields' => ['name','partner_id','stage_id']]);
 //$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', 'like', 'VEU%']]], ['fields' => ['name','partner_id','stage_id']]); //sql 497 registres unique cif
 
@@ -203,8 +204,8 @@ foreach ($sales as $sale) {
     echo "<br>";
 
 //bucle per detctar si esta acabada la subscripció
-    }
-    if (($estat_subscripcio == "In Progress")){
+}/*
+/*    if (($estat_subscripcio == "In Progress")){
 
       //$sql = "SELECT * FROM subscriptors_odoo";
         $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
@@ -227,8 +228,8 @@ foreach ($sales as $sale) {
         $stmt2->execute();
 
     $connection = null;
-  }
-}
+  }*/
+//}
 
 //---->Codi aprofitable<--------
 
