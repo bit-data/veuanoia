@@ -45,7 +45,6 @@ $uid = $response->value()->scalarval();
 echo 'hola '.$uid;
 
 // Crear un objeto cliente XML-RPC para el objeto "object"
-// Crear un objeto cliente XML-RPC para el objeto "object"
 $client = new xmlrpc_client("$url/xmlrpc/2/object");
 
 // Crear una solicitud XML-RPC para la función "execute_kw"
@@ -90,61 +89,75 @@ if (!$response->faultCode()) {
          echo "Estat subscripció: " . $estat_subscripcio . "<br>";
          // Hacer algo con los resultados
 
-         $partner_id = $result['partner_id'][0]->scalarval();
-         echo "id_client ".$partner_id. "<br>";
+         // Obtener el ID del partner
+$partner_id = $result['partner_id'][0]->scalarval();
+echo "id_client ".$partner_id. "<br>";
 
-       // Crear una solicitud XML-RPC para la función "execute_kw" en la tabla "res.partner"
-              $request_partner = new xmlrpcmsg('execute_kw', array(
-                 new xmlrpcval($db, 'string'),
-                 new xmlrpcval($uid, 'int'),
-                 new xmlrpcval($password, 'string'),
-                 new xmlrpcval('res.partner', 'string'),
-                 new xmlrpcval('search_read', 'string'),
-                 new xmlrpcval(
-                    array(
-                       new xmlrpcval(
-                          array(
-                             new xmlrpcval('id', 'string'),
-                             new xmlrpcval('=', 'string'),
-                             new xmlrpcval($partner_id, 'int')
-                          ), 'array'
-                       )
-                    ), 'array'
-                 ),
-                 new xmlrpcval(
-                    array(
-                       new xmlrpcval('name', 'string'),
-                       new xmlrpcval('email', 'string'),
-                       new xmlrpcval('mobile', 'string'),
-                       new xmlrpcval('phone', 'string'),
-                       new xmlrpcval('vat', 'string')
-                    ), 'array'
-                 )
-              ));
+// Crear una solicitud XML-RPC para la función "execute_kw" en la tabla "res.partner"
+$request_partner = new xmlrpcmsg('execute_kw', array(
+    new xmlrpcval($db, 'string'),
+    new xmlrpcval($uid, 'int'),
+    new xmlrpcval($password, 'string'),
+    new xmlrpcval('res.partner', 'string'),
+    new xmlrpcval('search_read', 'string'),
+    new xmlrpcval(
+        array(
+            new xmlrpcval(
+                array(
+                    new xmlrpcval('id', 'string'),
+                    new xmlrpcval('=', 'string'),
+                    new xmlrpcval($partner_id, 'int')
+                ), 'array'
+            )
+        ), 'array'
+    ),
+    new xmlrpcval(
+        array(
+            new xmlrpcval('name', 'string'),
+            new xmlrpcval('email', 'string'),
+            new xmlrpcval('mobile', 'string'),
+            new xmlrpcval('phone', 'string'),
+            new xmlrpcval('vat', 'string')
+        ), 'array'
+    ),
+    new xmlrpcval(
+        array(
+            new xmlrpcval('limit', 'int'),
+            new xmlrpcval(1, 'int')
+        ), 'struct'
+    )
+));
 
-              // Enviar la solicitud al servidor y obtener la respuesta
-              $response_partner = $client->send($request_partner);
+// Enviar la solicitud al servidor y obtener la respuesta
+$response_partner = $client->send($request_partner);
 
-              // Verificar que la respuesta del servidor es válida
-              if (!$response_partner->faultCode()) {
-                 // Obtener los resultados de la respuesta
-                 $value_partner = $response_partner->value();
-                 if ($value_partner->kindOf() == 'array') {
-                    $partners = $value_partner->scalarval();
-                    foreach ($partners as $partner) {
-                       // Mostrar el campo "vat" para cada socio
-                       $cif_subscriptor = $partner['vat'];
-                       echo "CIF: " . $cif_subscriptor . "<br>";
-                       echo "<br>";
+// Verificar que la respuesta del servidor es válida
+if (!$response_partner->faultCode()) {
+    // Obtener los resultados de la respuesta
+    $value_partner = $response_partner->value();
+    if ($value_partner->kindOf() == 'array') {
+        $partners = $value_partner->scalarval();
+        foreach ($partners as $partner) {
+            // Mostrar el campo "vat" para cada socio
+            $cif_subscriptor = $partner['vat']->value();
+            echo "CIF: " . $cif_subscriptor . "<br>";
+            echo "<br>";
 
-                       // Bucle para detectar si la suscripción ha terminado
-                       // ...
-                    }
-                 }
-              }
-           }
+            // Bucle para detectar si la suscripción ha terminado
+            // ...
         }
-     }
+    }
+} else {
+    echo "Error: " . $response_partner->faultString();
+}
+
+                     }
+                  }
+               }
+
+
+
+
   /* } else {
       echo 'Error: la respuesta del servidor no es un array.';
    }
