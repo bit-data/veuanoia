@@ -67,37 +67,9 @@ $client = new xmlrpc_client("$url/xmlrpc/2/object");
       ), 'array'
    )
 ));*/
-$id_partner = 19600; // the ID of the partner you want to filter by
 
 
-$partner_id = 196000;
-$id_list[0]= new xmlrpcval($partner_id, 'int');
-
-$request = new xmlrpcmsg('execute_kw', array(
-   new xmlrpcval($db, 'string'),
-   new xmlrpcval($uid, 'int'),
-   new xmlrpcval($password, 'string'),
-   new xmlrpcval('res.partner', 'string'),
-   new xmlrpcval('search_read', 'string'),
-   new xmlrpcval($id_list, "struct"), 
-   new xmlrpcval(
-      array(
-         new xmlrpcval(array(), 'array', 'struct'),
-         new xmlrpcval(
-            array(
-               new xmlrpcval('name', 'string'),
-               new xmlrpcval('email', 'string'),
-               new xmlrpcval('mobile', 'string'),
-               new xmlrpcval('vat', 'string'),
-            ), 'array'
-         )
-      ), 'array'
-   )
-));
-
-/*$id_partner = 123; // the ID of the partner you want to filter by
-
-$request = new xmlrpcmsg('execute_kw', array(
+/*$request = new xmlrpcmsg('execute_kw', array(
    new xmlrpcval($db, 'string'),
    new xmlrpcval($uid, 'int'),
    new xmlrpcval($password, 'string'),
@@ -105,11 +77,17 @@ $request = new xmlrpcmsg('execute_kw', array(
    new xmlrpcval('search_read', 'string'),
    new xmlrpcval(
       array(
-         new xmlrpcval(
-            array(
-               array('id', '=', $id_partner)
-            ), 'array'
-         ),
+        new xmlrpcval(
+array(
+new xmlrpcval(
+array(
+new xmlrpcval('name', 'string'),
+new xmlrpcval('ilike', 'string'),
+new xmlrpcval('A%', 'string')
+), 'array'
+)
+), 'array', 'struct'
+),
          new xmlrpcval(
             array(
                new xmlrpcval('name', 'string'),
@@ -122,40 +100,66 @@ $request = new xmlrpcmsg('execute_kw', array(
    )
 ));*/
 
+$partner_id = 19568;
 
-
-
-
-
-
-
-echo 'hola2 '.$uid;
-
+$request_partner = new xmlrpcmsg('execute_kw', array(
+   new xmlrpcval($db, 'string'),
+   new xmlrpcval($uid, 'int'),
+   new xmlrpcval($password, 'string'),
+   new xmlrpcval('res.partner', 'string'),
+   new xmlrpcval('search_read', 'string'),
+   new xmlrpcval(
+      array(
+        new xmlrpcval(
+array(
+new xmlrpcval(
+array(
+new xmlrpcval('id', 'string'),
+new xmlrpcval('ilike', 'string'),
+new xmlrpcval($partner_id, 'int')
+), 'array'
+)
+), 'array', 'struct'
+),
+         new xmlrpcval(
+            array(
+               new xmlrpcval('name', 'string'),
+               new xmlrpcval('email', 'string'),
+               new xmlrpcval('mobile', 'string'),
+               new xmlrpcval('phone', 'string'),
+               new xmlrpcval('vat', 'string')
+            ), 'array'
+         )
+      ), 'array'
+   )
+));
 
 // Enviar la solicitud al servidor y obtener la respuesta
-$response2 = $client->send($request);
+$response_partner = $client->send($request_partner);
 
 // Verificar que la respuesta del servidor es válida
-if (!$response2->faultCode()) {
+if (!$response_partner->faultCode()) {
    // Obtener los resultados de la respuesta
-   $value = $response2->value();
+   $value = $response_partner->value();
    if ($value->kindOf() == 'array') {
-      $results = $value->scalarval();
-      foreach ($results as $result) {
+      $partners = $value->scalarval();
+      foreach ($partners as $partner) {
 
-         $codi_subscriptor = $result['name']->scalarval();
-         echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
+         echo "Nom: " . $partner['name']->scalarval() . "<br>";
 
-         $nom_subcriptor = $result['email']->scalarval();
-         echo "Nom: " . $nom_subcriptor . "<br>";
+         $email_subscriptor = $partner['email']->scalarval();
+         echo "Email: " . $email_subscriptor . "<br>";
 
-         $estat_subscripcio = $result['mobile']->scalarval();
-         echo "Estat subscripció: " . $estat_subscripcio . "<br>";
-         // Hacer algo con los resultados
+         $mobil_subscriptor = $partner['mobile']->scalarval();
+         echo "mòbil: " . $mobil_subscriptor . "<br>";
 
-         // Obtener el ID del partner
-         $partner_id = $result['vat']->scalarval();
-         echo "vat " . $partner_id. "<br>";
+         $telefon_subscriptor = $partner['phone']->scalarval();
+         echo "phone: " . $telefon_subscriptor . "<br>";
+
+         $cif_subscriptor = $partner['vat']->scalarval();
+         echo "CIF: " . $cif_subscriptor . "<br>";
+
+         echo "<br>";
 }
 }
 }
