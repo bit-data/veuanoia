@@ -13,9 +13,26 @@ if (!$connection) {
 
 $sql = "INSERT INTO subscriptors_odoo VALUES ('',:num_subs,:id_partern,:nom,:dni,:email,:telefon,:mobil)";
 $sql2 = "INSERT INTO subscriptors_passwords VALUES (:id_partern,:dni,:password)";
+$sql3 = "DROP TABLE subscriptors_odoo";
+$sql4 = 'CREATE TABLE subscriptors_odoo (
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  num_subs varchar(100) NOT NULL,
+  id_partern int(10),
+  nom varchar(250),
+  dni varchar(10),
+  email varchar(200),
+  telefon varchar(20),
+  mobil varchar(20),
+  PRIMARY KEY (id),
+  UNIQUE KEY dni (dni)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;'
 
 $stmt = $connection->prepare($sql);
 $stmt2 = $connection->prepare($sql2);
+$stmt3 = $connection->prepare($sql3);
+$stmt3->execute();
+$stmt4 = $connection->prepare($sql4);
+$stmt4->execute();
 
 //---->INICI CONNEXIÓ<--------
 // Set up the connection details
@@ -156,39 +173,44 @@ if (!$response_partner->faultCode()) {
          echo "<br>";
 
         }//foreach ($partners as $partner)
+
+        if (($estat_subscripcio == "In Progress")){
+
+        try{
+          //$sql = "SELECT * FROM subscriptors_odoo";
+            $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
+            $sql2 = "INSERT INTO subscriptors_passwords VALUES ($partner_id,'$cif_subscriptor','$cif_subscriptor')";
+
+            $stmt->bindParam(':num_subs', $codi_subscriptor, PDO::PARAM_STR);
+            $stmt->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+            $stmt->bindParam(':nom', $nom_subcriptor, PDO::PARAM_STR);
+            $stmt->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email_subscriptor, PDO::PARAM_STR);
+            $stmt->bindParam(':telefon', $telefon_subscriptor, PDO::PARAM_STR);
+            $stmt->bindParam(':mobil', $mobil_subscriptor, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            $stmt2->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+            $stmt2->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+            $stmt2->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
+
+            $stmt2->execute();
+
+        $connection = null;
+
+
+        }//end try
+        catch (PDOException $e) {
+            // Si ocurre un error, mostrar un mensaje de error personalizado
+            echo "Error al insertar les dades en la bbbdd: " . $e->getMessage();
+        }
+        }//end if "in progress"
+
       }//2n if ($value->kindOf() == 'array')
     }//if (!$response_partner->faultCode())
   }//end foreach ($results as $result)
 }//if 1er ($value->kindOf() == 'array')
-
-if (($estat_subscripcio == "In Progress")){
-
-  //$sql = "SELECT * FROM subscriptors_odoo";
-    $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
-    $sql2 = "INSERT INTO subscriptors_passwords VALUES ($partner_id,'$cif_subscriptor','$cif_subscriptor')";
-
-    $stmt->bindParam(':num_subs', $codi_subscriptor, PDO::PARAM_STR);
-    $stmt->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
-    $stmt->bindParam(':nom', $nom_subcriptor, PDO::PARAM_STR);
-    $stmt->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
-    $stmt->bindParam(':email', $email_subscriptor, PDO::PARAM_STR);
-    $stmt->bindParam(':telefon', $telefon_subscriptor, PDO::PARAM_STR);
-    $stmt->bindParam(':mobil', $mobil_subscriptor, PDO::PARAM_STR);
-
-    $stmt->execute();
-
-    $stmt2->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
-    $stmt2->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
-    $stmt2->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
-
-    $stmt2->execute();
-
-$connection = null;
-}//end if "in progress"
-
-else {
-  echo "adeuuuuuuuuu";
-}
 
 }//end 1er if(!$response->faultCode())
 
