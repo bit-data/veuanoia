@@ -6,7 +6,7 @@ require_once('phpxmlrpc-4.10.1/lib/xmlrpc.inc');
 include('../php/config.php');
 
 // Create connection
-//$conn = mysqli_connect($servername, $username, $password, $dbname);
+
 if (!$connection) {
   die("Connection failed: " . mysqli_connect_error());
 } else {echo "connexió ok";}
@@ -151,77 +151,16 @@ if (!$response_partner->faultCode()) {
          $cif_subscriptor = $partner['vat']->scalarval();
          echo "CIF: " . $cif_subscriptor . "<br>";
 
+          echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
+
          echo "<br>";
 }
 }
 }
 }
 }
-}
 
-
-
-  /* } else {
-      echo 'Error: la respuesta del servidor no es un array.';
-   }
-} else {
-   echo 'Error: ' . $response->faultString();
-}*/
-
-
-
-
-
-//echo 'a10 '. $results;
-
-
-//---->END CONNEXIÓ<--------
-
-
-/*$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[]], ['fields' => ['name','partner_id','stage_id']]); //sql 500 registres unique cif
-//$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', '=', 'VEU05']]], ['fields' => ['name','partner_id','stage_id']]);
-//$sales = $models->execute_kw($db, $uid, $password,'sale.subscription', 'search_read', [[['name', 'like', 'VEU%']]], ['fields' => ['name','partner_id','stage_id']]); //sql 497 registres unique cif
-
-
-foreach ($sales as $sale) {
-    $codi_subscriptor = $sale['name'];
-    echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
-    //echo "Codi subscriptor: " . $sale['name'] . "<br>";
-
-    $nom_subcriptor = $sale['partner_id'][1];
-    echo "Nom: " . $nom_subcriptor . "<br>";
-    //echo "Nom: " . $sale['partner_id'][1] . "<br>";
-
-    $estat_subscripcio = $sale['stage_id'][1];
-    echo "Estat subscripció: " . $estat_subscripcio . "<br>";
-    //echo "Estat subscripció: " . $sale['stage_id'][1] . "<br>";
-
-    //id client a la taula subscriptor per agafar les dades dela taula client
-    $partner_id = $sale['partner_id'][0];
-    echo "id_client ".$partner_id. "<br>";
-    $partners = $models->execute_kw($db, $uid, $password,'res.partner', 'search_read', [[['id', '=', $partner_id]]], ['fields' => ['name', 'email', 'mobile','phone','vat']]);
-    foreach ($partners as $partner) {
-
-    //exemple per mostra camp i per comparar nom amb la taula subscriptor per assegurar q es el mateix
-    echo "Nom: " . $partner['name'] . "<br>";
-
-    $email_subscriptor = $partner['email'];
-    echo "Email: " . $email_subscriptor . "<br>";
-
-    $mobil_subscriptor = $partner['mobile'];
-    echo "mòbil: " . $mobil_subscriptor . "<br>";
-
-    $telefon_subscriptor = $partner['phone'];
-    echo "phone: " . $telefon_subscriptor . "<br>";
-
-    $cif_subscriptor = $partner['vat'];
-    echo "CIF: " . $cif_subscriptor . "<br>";
-
-    echo "<br>";
-
-//bucle per detctar si esta acabada la subscripció
-}/*
-/*    if (($estat_subscripcio == "In Progress")){
+    if (($estat_subscripcio == "In Progress")){
 
       //$sql = "SELECT * FROM subscriptors_odoo";
         $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
@@ -244,8 +183,8 @@ foreach ($sales as $sale) {
         $stmt2->execute();
 
     $connection = null;
-  }*/
-//}
+  }//end if "in progress"
+}//end if(!$response->faultCode()) {
 
 //---->Codi aprofitable<--------
 
