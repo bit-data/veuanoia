@@ -14,13 +14,15 @@ if (!$connection) {
 $sql = "INSERT INTO subscriptors_odoo VALUES ('',:num_subs,:id_partern,:nom,:dni,:email,:telefon,:mobil)";
 $sql2 = "INSERT INTO subscriptors_passwords VALUES (:id_partern,:dni,:password)";
 $sql3 = "TRUNCATE TABLE subscriptors_odoo";
-$sql4 = "SELECT count(id) FROM subscriptors_odoo";
+$sql4 = "INSERT INTO subscriptors_odoo VALUES ('','Al',3,'CLUB SUBSCRIPTOR','00000000X','club@veuanoia.cat','','')";
+$sql5 = "SELECT count(id) FROM subscriptors_odoo";
 
 $stmt = $connection->prepare($sql);
 $stmt2 = $connection->prepare($sql2);
 $stmt3 = $connection->prepare($sql3);
 $stmt3->execute();
 $stmt4 = $connection->prepare($sql4);
+$stmt5 = $connection->prepare($sql5);
 
 
 
@@ -205,9 +207,10 @@ if (!$response_partner->faultCode()) {
 
 }//end 1er if(!$response->faultCode())
 
-//per comprovar els registres inserits
+//per inserir subscriptor de prova i comprovar els registres inserits
 $stmt4->execute();
-$contador = $stmt4->fetchColumn();
+$stmt5->execute();
+$contador = $stmt5->fetchColumn();
 
 echo "S'han inserit ". $contador. " registres";
 
