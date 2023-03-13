@@ -63,7 +63,7 @@
 </style>
 <link href="css/signin.css" rel="stylesheet">
 </head>
-<body class="selection_background text-center">
+<body class="text-center selection_background">
 
 <main class="form-signin w-100 m-auto">
   <a href="https://veuanoia.cat"><img class="mb-4" src="images/logo_veuanoia.png" alt="Logo de la Veu Anoia" width="220" height="228"></a>
