@@ -13,7 +13,7 @@ if ($new_password==$repit_password && $new_password!="" ){
 
     $query = $connection->prepare("UPDATE subscriptors_passwords SET password='$new_password' WHERE DNI='$dencryption_username'");
     $query->execute();
-    header("Location: ../index.php");
+    header("Location: ../user_pass.php");
 
 }
 

@@ -113,6 +113,6 @@
             setcookie ("email","",time()- (60*60*24*365), "/");
             setcookie ("subscriptor","",time()- (60*60*24*365),"/");
             setcookie ("telefon","",time()- (60*60*24*365),"/");
-            header("Location: ../index.php");
+            header("Location: ../user_pass.php");
         }
 ?>

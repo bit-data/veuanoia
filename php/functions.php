@@ -40,6 +40,6 @@
             setcookie ("telefon","",time()- (60*60*24*365),"/");
             setcookie ("dni","",time()- (60*60*24*365),"/");*/
             setcookie ("usuari","",time()- (60*60*24*365),"/");
-            header("Location: ../index.php");
+            header("Location: ../user_pass.php");
         }
 ?>
