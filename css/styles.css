@@ -13,6 +13,11 @@ text-align: center;
   margin-top: -25px;
 }
 
+.selection_background{
+  background-size: 100%;
+  background-image: url("../images/background_selection.png");
+  background-repeat: repeat;
+}
 /*-----Selecció inicial (final)-----*/
 
 
