@@ -3,6 +3,12 @@ font-family: Verdana, 'Geneva', sans-serif;
 text-align: center;
 }
 
+a{
+  font-family:'Century Gothic',sans-serif;
+  font-weight:bold;
+  text-decoration:none;
+  color:#ff9400;"
+}
 
 /*-----Selecció inicial (initial)-----*/
 
