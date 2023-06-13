@@ -66,10 +66,13 @@
 <body class="text-center selection_background">
 
 <main class="form-signin w-100 m-auto">
-  <a href="https://veuanoia.cat"><img class="mb-4" src="images/logo_veuanoia.png" alt="Logo de la Veu Anoia" width="220" height="228"></a>
+  <a href="https://veuanoia.cat"><img class="mb-4" src="images/logo_veuanoia.png" alt="Logo de la Veu Anoia" width="198" height="205"></a>
   <h1 class="h3 mb-3 fw-normal segon_text"><a href="https://veuanoia.cat">Llegir les notícies</a></h1>
+    <p class="h3 mb-3 fw-normal linia"></p>
+  <a href="https://veuanoia.cat/cultura/#agenda"><img class="mb-4" src="images/logo_agenda.png" alt="Logo de l'Agenda de l'Anoia'" width="198" height="205"></a>
+  <h1 class="h3 mb-3 fw-normal"><a href="https://veuanoia.cat/cultura/#agenda">l'Agenda de l'Anoia</a></h1>
   <p class="h3 mb-3 fw-normal linia"></p>
-  <a href="user_pass.php"><img class="mb-4 segon_logo" src="images/logo_club.png" alt="Logo del club del subscriptor" width="220" height="228"></a>
+  <a href="user_pass.php"><img class="mb-4 segon_logo" src="images/logo_club.png" alt="Logo del club del subscriptor" width="198" height="205"></a>
   <h1 class="h3 mb-3 fw-normal"><a href="user_pass.php">Accedir a la meva àrea de subscriptor/a</a></h1>
   <em>Pots fer-te subscriptor/a <a href="https://clubveuanoia.cat/">aquí</a></em>
 </main>
