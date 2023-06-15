@@ -1,9 +1,9 @@
 <?php
 // Define los datos del usuario que deseas agregar
 $user_data = array(
-    "email" => "pavo5@ejemplo.com",
+    "email" => "pavo3@ejemplo.com",
     "attributes" => array(
-          "NOMBRE" => "Albert",
+          "NOMBRE" => "emma",
           "APELLIDOS" => "Escobar"
       )
   );
@@ -17,7 +17,7 @@ $url = "https://api.sendinblue.com/v3/contacts";
 // Define las cabeceras de la solicitud
 $headers = array(
     "Content-Type: application/json",
-    "api-key: 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"
+    "api-key: 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"
 );
 
 // Inicializa la solicitud curl

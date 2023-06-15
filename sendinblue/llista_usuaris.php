@@ -1,6 +1,6 @@
 <?php
 // Definimos nuestra clave de API
-$api_key = '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';
+$api_key = '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';
 
 // Inicializamos cURL
 $ch = curl_init();
