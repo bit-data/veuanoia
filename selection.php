@@ -69,8 +69,8 @@
   <a href="https://veuanoia.cat"><img class="mb-4" src="images/logo_veuanoia.png" alt="Logo de la Veu Anoia" width="150" height="172"></a>
   <h1 class="h3 mb-3 fw-normal segon_text"><a href="https://veuanoia.cat">Llegir les notícies</a></h1>
     <p class="h3 mb-3 fw-normal linia"></p>
-  <a href="https://veuanoia.cat/cultura/#agenda"><img class="mb-4" src="images/logo_agenda.png" alt="Logo de l'Agenda de l'Anoia'" width="150" height="159"></a>
-  <h1 class="h3 mb-3 fw-normal"><a href="https://veuanoia.cat/cultura/#agenda">l'Agenda de l'Anoia</a></h1>
+  <a href="https://veuanoia.cat/el-calendari-de-lanoia/"><img class="mb-4" src="images/logo_agenda.png" alt="Logo de l'Agenda de l'Anoia'" width="150" height="159"></a>
+  <h1 class="h3 mb-3 fw-normal"><a href="https://veuanoia.cat/el-calendari-de-lanoia/">l'Agenda de l'Anoia</a></h1>
   <p class="h3 mb-3 fw-normal linia"></p>
   <a href="user_pass.php"><img class="mb-4 segon_logo" src="images/logo_club.png" alt="Logo del club del subscriptor" width="150" height="155"></a>
   <h1 class="h3 mb-3 fw-normal"><a href="user_pass.php">Àrea de subscriptor/a</a></h1>
