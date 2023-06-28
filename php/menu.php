@@ -81,7 +81,7 @@ $date_past = date('d-m-Y', $previousFriday);
     <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
     <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
-    <a href="https://veuanoia.cat/compra-el-diari/"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu diari</button></a>
+    <a href="https://veuanoia.cat/el-meu-compte/"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu diari</button></a>
     <a href="https://veuanoia.cat/hemeroteca/"><button class="w-100 btn btn-lg btn-primary bt_menu">Hemeroteca <br><span class="heme_data">fins <?php echo $date_past?></span></button></a>
     <form method="post">
       <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
