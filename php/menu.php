@@ -79,7 +79,7 @@ $date_past = date('d-m-Y', $previousFriday);
     <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
     <h1 class="h3 mb-3 fw-normal">Hola <?php echo $dencryption_name ?>!</h1>
     <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
-    <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Promocions</button></a>
+    <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Descomptes</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
     <a href="https://veuanoia.cat/el-meu-compte/"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu diari</button></a>
     <a href="https://veuanoia.cat/hemeroteca/"><button class="w-100 btn btn-lg btn-primary bt_menu">Hemeroteca <br><span class="heme_data">fins <?php echo $date_past?></span></button></a>
