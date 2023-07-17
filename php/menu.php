@@ -74,17 +74,17 @@ $previousFriday = strtotime("-$daysToPreviousFriday day", $fifteenDaysAgo);
 $date_past = date('d-m-Y', $previousFriday);
 ?>
 </head>
-<body class="text-center">
+<body class="text-center" style="background-color: #f8edd7">
   <main class="form-signin w-100 m-auto">
-    <img class="mb-4" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
-    <h1 class="h3 mb-3 fw-normal">Hola <?php echo $dencryption_name ?>!</h1>
-    <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu carnet</button></a>
+    <h1 class="h3 mb-3 fw-normal nom_subs">Hola, <?php echo $dencryption_name ?>!</h1>
+    <img class="mb-4 img_menu" src="../images/logo_sub2.png" alt="Logo del club del subscriptor" width="288" height="228">
+    <a href="carnet.php"><button class="w-100 btn btn-lg btn-primary bt_menu primer_bt">El meu carnet</button></a>
     <a href="https://clubveuanoia.cat/descomptes/"><button class="w-100 btn btn-lg btn-primary bt_menu">Descomptes</button></a>
     <a href="contacte.php"><button class="w-100 btn btn-lg btn-primary bt_menu">Contacte</button></a>
     <a href="https://veuanoia.cat/el-meu-compte/"><button class="w-100 btn btn-lg btn-primary bt_menu">El meu diari</button></a>
     <a href="https://veuanoia.cat/hemeroteca/"><button class="w-100 btn btn-lg btn-primary bt_menu">Hemeroteca <br><span class="heme_data">fins <?php echo $date_past?></span></button></a>
     <form method="post">
-      <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg btn-primary bt_menu" value="Tancar sessió" />
+      <input type="submit" name="button1" class="bt_tancar w-100 btn btn-lg" value="tancar sessió" />
     </form>
     <div class="container">
       <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
