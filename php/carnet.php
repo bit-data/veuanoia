@@ -67,7 +67,7 @@
 <body class="body_carnet_nou text-center">
   <main class="form-signin w-100 m-auto">
     <img class="cantonada" src="../images/cantonada.svg" width="85"  height="85">
-  <img class="mb-4 carnet_top" src="../images/carnet_final.png" alt="Carnet del Club del subscriptor" width="322"  height="660">
+  <img class="mb-4 carnet_top" src="../images/carnet_final.png" alt="Carnet del Club del subscriptor" width="380"  height="833">
   <p><?php echo $dencryption_name ?></p>
 <!--  </div>-->
 </div>

@@ -120,8 +120,8 @@ ul{
 .body_carnet_nou{
   /*background-image: url("../images/carnet_port.png");
   background-repeat: no-repeat;*/
-  background-size: 250%;
-  background-image: url("../images/background.png");
+  background-size: 230%;
+  background-image: url("../images/background.jpg");
   background-repeat: repeat;
 }
 
@@ -139,7 +139,7 @@ ul{
 
   .carnet_top{
     position: absolute;
-    top:75px;
+    top:0px;
     left: 50%;
     transform: translate(-50%, 0%);
   }
