@@ -151,6 +151,19 @@ ul{
   }
 /*}*/
 
+.text_carnet {
+ color: #F8EDD7 !important;
+ font-size: 25px !important;
+ font-family: Tahoma !important;
+ letter-spacing: 2px !important;
+ line-height: 1.10;
+ font-weight: 300;
+ font-style: normal;
+ text-transform: uppercase;
+ margin-top: 160px;
+ width: 300px !important;
+}
+
 /*@media screen and (min-width: 450px) {
   .body_carnet_nou{
     background-image: url("../images/carnet_lands.png");
@@ -167,7 +180,14 @@ ul{
     transform: translate(-50%, -50%);
     width: 65%;
 
-  }*/
+  }
+
+  .body_carnet_nou{
+    /*background-color: #ff9400;
+    background-color: #feba00;
+  }
+
+  */
 
   /*ajust div footer en landscape*/
   .col-md-4 {
@@ -175,9 +195,6 @@ ul{
   }
 }
 
-.body_carnet_nou{
-  /*background-color: #ff9400;*/
-  background-color: #feba00;
-}
+
 
 /*-----Style carnet (finish)-----*/

@@ -14,7 +14,7 @@ if (!$connection) {
 $sql = "INSERT INTO subscriptors_odoo VALUES ('',:num_subs,:id_partern,:nom,:dni,:email,:telefon,:mobil)";
 $sql2 = "INSERT INTO subscriptors_passwords VALUES (:id_partern,:dni,:password)";
 $sql3 = "TRUNCATE TABLE subscriptors_odoo";
-$sql4 = "INSERT INTO subscriptors_odoo VALUES ('','Al',3,'CLUB SUBSCRIPTOR','00000000X','club@veuanoia.cat','','')";
+$sql4 = "INSERT INTO subscriptors_odoo VALUES ('','Al',3,'CLUB SUBSCRIPTOR SOLÈ SOLÉ','00000000X','club@veuanoia.cat','','')";
 $sql5 = "SELECT count(id) FROM subscriptors_odoo";
 
 $stmt = $connection->prepare($sql);
