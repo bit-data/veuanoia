@@ -64,6 +64,11 @@ a{
   border-color: white !important;
 }
 
+.bt_login {
+  color: white !important;
+  background-color: black !important;
+}
+
 .bt_tancar{
   width: 175px !important;
   font-size: 13px;

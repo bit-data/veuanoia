@@ -88,7 +88,7 @@
       <input type="checkbox" value="remember-me" required> Heu d'acceptar les cookies imprescindibles pel correcte funcionament de l'aplicació.
     </label>
   </div>
-  <button class="w-100 btn btn-lg btn-primary bt_menu" type="submit" name="login" value="login">Entrar</button>
+  <button class="w-100 btn btn-lg btn-primary bt_menu bt_login" type="submit" name="login" value="login">Entrar</button>
 </form>
 <p>Si has oblidat la teva contrasenya fes click <a href="php/forgot_password.php">aquí</a></p>
 <em>Pots fer-te subscriptor/a <a href="https://clubveuanoia.cat/">aquí</a></em>
