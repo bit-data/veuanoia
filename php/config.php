@@ -16,4 +16,7 @@ try {
 } catch (PDOException $e) {
     exit("Error: " . $e->getMessage());
 }//echo "Connected successfully \n";
+
+//ApiKey FCM
+define ('FMC_APIKEY', "AAAAZYx9yms:APA91bH6m28my-A1xERbDzjiLKIYjK_gNrr5PJ-1yd1gDuVtQSkT93rmnlPZOhyW7ECGHvxwYx55FB4Fm3S2R3ygbS4h2W8D_M-I_TQtBpNAFXZiVON-hSb29HkBGw7Qo73QzrQDgfwh")
 ?>
