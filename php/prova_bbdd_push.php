@@ -25,5 +25,6 @@ else {
 }
 
 $connection->close();
+echo "hola2";
 
 ?>
