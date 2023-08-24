@@ -3,8 +3,8 @@
 include_once '../config.php';
 
 //$prueba="nul";
-$prueba = $_GET['token'];
-$sql = "SELECT id FROM firebase_push WHERE deviceid= '$prueba'";
+$token= $_GET['token'];
+$sql = "SELECT id FROM firebase_push WHERE deviceid= '$token'";
 $stmt = $connection->prepare($sql);
 $stmt->execute();
 
