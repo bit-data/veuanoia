@@ -56,12 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         curl_close($ch);
 
         // Mostrar la respuesta
-        echo "Notificació enviada correctament!!!!";//$response;
+        echo "Notificació enviada correctament!!!! FALTA FER WEB I REDIRECCIONAR";//$response;
       }//end if result
 
       else {
 
-        echo "no tens permís per enviar la notificació "; //definir web d'error
+        echo "No tens permís per enviar la notificació FALTA FER WEB I REDIRECCIONAR"; //definir web d'error
 
       }//end else
 }//ens if SERVER
