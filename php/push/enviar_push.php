@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $url = 'https://fcm.googleapis.com/fcm/send';
 
         // Credenciales de acceso a la API (clave del servidor)
-        $serverKey = 'AAAAZYx9yms:APA91bH6m28my-A1xERbDzjiLKIYjK_gNrr5PJ-1yd1gDuVtQSkT93rmnlPZOhyW7ECGHvxwYx55FB4Fm3S2R3ygbS4h2W8D_M-I_TQtBpNAFXZiVON-hSb29HkBGw7Qo73QzrQDgfwh';
+        $serverKey = 'AAAAi_p7mb4:APA91bHc77oCW9G5BWLgDVRwwHNzaC7DFqVfvOYMVyXgJW9alIv0ONZgRjl_XgB-O0Nz8thTe6BCRotCNLDyPOXzpI13JlQ-ghnDeAnSf66i_ehymFLYe-J-2p92BMswnpnYbA5p3NM_';
 
         // Datos de la notificación
         $data = [
