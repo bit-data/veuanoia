@@ -66,30 +66,17 @@
     <body class="text-center" style="background-color: #a7adad">
     <main class="form-signin w-100 m-auto">
 
-<form action="enviar_push.php" method="post">
+<form action="notificacionsveuanoia.html">
   <img class="mb-4" src="../../images/logo_sub2.png" alt="Logo del club del subscriptor" width="144" height="144">
   <img class="mb-4" src="../../images/Bit-Data_Logo.png" alt="Logo del club del subscriptor" width="144">
-  <h1 class="h3 mb-3 fw-normal">Enviar notificació per iOS i Android</h1>
+  <h1 class="h3 mb-3 fw-normal">Notificació no enviada</h1>
+    <h2 class="h3 mb-3 fw-normal">No tens permís per enviar notificacions</h2>
 
 <div class="form-group">
-  <label for="tiol">Títol: màx. 65 caràcters</label>
-  <textarea class="form-control" id="titol" placeholder="Títol" name="titol" maxlength="65" rows="2" pattern="[a-zA-Z0-9]+" required></textarea><br>
+<img class="mb-4" src="../../images/check_nok.png" alt="Notificació enviada correctament" width="100">
 </div>
-
-<div class="form-group">
-  <label for="missatge">Missatge: màx. 178 caràcters</label>
-  <textarea class="form-control" id="missatge" placeholder="Missatge" name="missatge" maxlength="178" rows="3" pattern="[a-zA-Z0-9]+" required></textarea><br>
-</div>
-
-
-<div class="form-floating">
-    <input type="password" class="form-control" id="contrasenya" name="contrasenya" required><br>
-    <label for="constrasenya">Contrasenya</label>
-</div>
-
-    <input type="submit" value="Enviar notificació">
+  <button onclick="location.href='notificacionsveuanoia.html'">Nova notificació</button>
 </form>
-
 </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

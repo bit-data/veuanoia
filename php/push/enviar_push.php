@@ -56,12 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         curl_close($ch);
 
         // Mostrar la respuesta
-        echo "Notificació enviada correctament!!!! FALTA FER WEB I REDIRECCIONAR";//$response;
+        echo "Notificació enviada correctament!!!!";
+        header('Location: notificacionsveuanoia_enviada.html');
       }//end if result
 
       else {
 
-        echo "No tens permís per enviar la notificació FALTA FER WEB I REDIRECCIONAR"; //definir web d'error
+        echo "No tens permís per enviar la notificació";
+        header('Location: notificacionsveuanoia_noenviada.html');
 
       }//end else
 }//ens if SERVER
