@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
             'to' => '/topics/VEU_ANOIA',  //  COnfigurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
             'notification' => [
-                'title' => $titol,//'Emma',
-                'body' => $missatge,//'Guapa',
+                'title' => $titol,
+                'body' => $missatge,
             ],
         ];
 
