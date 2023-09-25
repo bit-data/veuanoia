@@ -32,7 +32,7 @@ $stmt5 = $connection->prepare($sql5);
 $url = "https://publicacionsanoia.odoo.com";
 $db = "dsardai2t-publicacionsanoia-main-4330105";
 $username = "club@veuanoia.cat";
-$password = "VeuAnoia2022";
+$password = "eva4";
 
 // Create a new xmlrcp client
 $client = new xmlrpc_client("$url/xmlrpc/2/common");
