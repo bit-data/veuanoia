@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titol = $_POST['titol'];
     $missatge = $_POST['missatge'];
     $contrasenya = $_POST['contrasenya'];
+    $topic = $_POST['desti'];
 
     $sql = "SELECT id FROM firebase_push WHERE deviceid= '$contrasenya'";
     $stmt = $connection->prepare($sql);
@@ -26,7 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Datos de la notificación
         $data = [
-            'to' => '/topics/VEU_ANOIA',  //  COnfigurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
+            'to' => '/topics/VEU_ANOIA',  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
+            'to' => $topic,  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
+
             'notification' => [
                 'title' => $titol,
                 'body' => $missatge,
