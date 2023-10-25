@@ -8,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrasenya = $_POST['contrasenya'];
     $topic = $_POST['desti'];
 
+    echo $titol .'+'.$missatge.'+'.$contrasenya.'+'.$topic;
+
     $sql = "SELECT id FROM firebase_push WHERE deviceid= '$contrasenya'";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
@@ -27,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Datos de la notificación
         $data = [
-            'to' => '/topics/VEU_ANOIA',  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
-            'to' => $topic,  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
+          //  'to' => '/topics/VEU_ANOIA2',  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
+            'to' => '/topics/'.$topic,  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
 
             'notification' => [
                 'title' => $titol,
@@ -60,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Mostrar la respuesta
         echo "Notificació enviada correctament!!!!";
-        header('Location: notificacionsveuanoia_enviada.html');
+      //  header('Location: notificacionsveuanoia_enviada.html');
       }//end if result
 
       else {
