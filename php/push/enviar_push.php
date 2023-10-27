@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Mostrar la respuesta
         echo "Notificació enviada correctament!!!!";
-      //  header('Location: notificacionsveuanoia_enviada.html');
+        header('Location: notificacionsveuanoia_enviada.html');
       }//end if result
 
       else {
