@@ -36,7 +36,7 @@ try {
     $mail->Host = 'bit-data-es.correoseguro.dinaserver.com'; // Servidor SMTP
     $mail->SMTPAuth = true;
     $mail->Username = $email_to; // Email que rep
-    $mail->Password = '*Bit-Data19'; // Contrasenya email
+    $mail->Password = 'Batu=6414'; // Contrasenya email
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
