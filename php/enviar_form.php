@@ -11,7 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 if(isset($_POST['email'])) {
 
 //email i subject
-$email_to = "info@bit-data.es";
+$email_to = "club@veuanoia.cat";
 $email_subject = "App club subscriptor";
 
 // Validació camps formulari
@@ -33,10 +33,10 @@ $mail->CharSet = 'UTF-8';
 try {
     // Configuració del servidor SMTP i les credencials
     $mail->isSMTP();
-    $mail->Host = 'bit-data-es.correoseguro.dinaserver.com'; // Servidor SMTP
+    $mail->Host = 'smtp.gmail.com'; // Servidor SMTP
     $mail->SMTPAuth = true;
     $mail->Username = $email_to; // Email que rep
-    $mail->Password = 'Batu=6414'; // Contrasenya email
+    $mail->Password = 'uitw wgxs cuqk vgxt'; // Contrasenya email
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
@@ -64,8 +64,8 @@ try {
     //echo 'l'email s'ha enviat correctament.';
     header("Location: email_enviat.html");
 } catch (Exception $e) {
-    //echo 'Error al enviar l'email: ' . $mail->ErrorInfo;
-    header("Location: email_no_enviat.html");
+    echo 'Error al enviar email: ' . $mail->ErrorInfo;
+    //header("Location: email_no_enviat.html");
 }
 
 }
