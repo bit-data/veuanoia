@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrasenya = $_POST['contrasenya'];
     $topic = $_POST['desti'];
 
-    echo $titol .'+'.$missatge.'+'.$contrasenya.'+'.$topic;
+  //  echo $titol .'+'.$missatge.'+'.$contrasenya.'+'.$topic;
 
     $sql = "SELECT id FROM firebase_push WHERE deviceid= '$contrasenya'";
     $stmt = $connection->prepare($sql);
@@ -31,6 +31,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
           //  'to' => '/topics/VEU_ANOIA2',  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
             'to' => '/topics/'.$topic,  //  Configurat amb topic per enviar a tots els dispositius subscrits al tema, en cas de voler enviar a 1 dispositiu concret s'hauria d'especificar el token
+
+            'data' => [
+                'url' => 'https://www.ambiens.es',
+                'other_data' => 'otros datos',
+            ],
 
             'notification' => [
                 'title' => $titol,
