@@ -1,3 +1,12 @@
+<?php
+
+if (!isset($_COOKIE['usuari'])) {
+  // Si no ha iniciado sesión, redirige a la página de inicio de sesión
+  header("Location: ../user_pass.php");
+  exit();
+}
+
+?>
 <!doctype html>
 <html lang="cat">
   <head>

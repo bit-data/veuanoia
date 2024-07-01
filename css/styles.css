@@ -5,18 +5,18 @@ text-align: center;
 
 a{
   font-family:'Century Gothic',sans-serif;
-  font-weight:bold;
+  /*font-weight:bold;*/
   text-decoration:none;
-  color:#ff9400;"
+  color:#000000;
 }
 
 /*-----Selecció inicial (initial)-----*/
 
 .linia {
-  margin-top: 8%;
+  margin-bottom: 15px!important;
 }
 .segon_text{
-  margin-top: -25px;
+  margin-top: -17px;
 }
 
 .selection_background{
@@ -24,6 +24,29 @@ a{
   background-image: url("../images/background_selection.png");
   background-repeat: repeat;
 }
+
+.subscriptor {
+  background-color: rgb(43, 43, 43);
+  color: white; /* Para que el texto sea legible */
+  position: relative;
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  margin-left: calc(50% - 50vw); /* Centra el div */
+  padding: 20px 10px; 
+  clip-path: ellipse(95% 100% at 50% 100%); /*para hacer la curva*/
+}
+
+.titol_club{
+  margin: 20px 0;
+}
+
+.area_subscriptor a{
+  color:#ffffff!important;
+}
+
+.negreta{
+  font-weight:bold;
+}
+
 /*-----Selecció inicial (final)-----*/
 
 
@@ -198,7 +221,7 @@ ul{
   .col-md-4 {
     width: 75%;
   }
-}
+/*}*/
 
 
 
