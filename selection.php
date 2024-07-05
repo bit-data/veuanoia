@@ -73,7 +73,7 @@
   <link href="css/signin.css" rel="stylesheet">
 </head>
 <body class="text-center selection_background">
-<main class="form-signin w-100 m-auto">
+<main class="form-signin2 w-100 m-auto">
   <div class="container">
     <div class="row">
       <div class="col-6">
@@ -104,7 +104,7 @@
         <h1 class="h6 mb-3 fw-normal img_area"><a href="user_pass.php">Àrea subscriptor</a></h1>
       </div>
       <div class="col-6">
-        <a href="user_pass.php"><img class="mb-4" src="images/club_carnet.png" alt="Logo del carnet subscriptor" width="150" height="155"></a>
+        <a href="php/carnet.php"><img class="mb-4" src="images/club_carnet.png" alt="Logo del carnet subscriptor" width="150" height="155"></a>
         <h1 class="h6 mb-3 fw-normal"><a href="php/carnet.php">El meu carnet</a></h1>
       </div>
       <div class="row">
