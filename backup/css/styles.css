@@ -1,0 +1,205 @@
+body, .body_carnet_nou{
+font-family: Verdana, 'Geneva', sans-serif;
+text-align: center;
+}
+
+a{
+  font-family:'Century Gothic',sans-serif;
+  font-weight:bold;
+  text-decoration:none;
+  color:#ff9400;"
+}
+
+/*-----Selecció inicial (initial)-----*/
+
+.linia {
+  margin-top: 8%;
+}
+.segon_text{
+  margin-top: -25px;
+}
+
+.selection_background{
+  background-size: 100%;
+  background-image: url("../images/background_selection.png");
+  background-repeat: repeat;
+}
+/*-----Selecció inicial (final)-----*/
+
+
+/*-----Style menu i botons (initial)-----*/
+
+.nom_subs{
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  color: #333333;
+}
+
+.img_menu{
+  margin-top: 5px;
+
+}
+
+.primer_bt{
+  margin-top: -15px!important;
+}
+
+.bt_menu{
+  margin: 10px 0;
+  font-family: Tahoma;
+  /*font-family: 'Readex Pro', 'Thaoma', sans-serif;*/
+  font-size: 22px;
+  letter-spacing: 2px !important;
+  line-height: 1.0;
+  /*font-weight: 600;*/
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  padding: 0.7em 1.3em;
+  color: #d4964b;
+  background: #fff !important;
+  border-color: white !important;
+}
+
+.bt_login {
+  color: white !important;
+  background-color: black !important;
+}
+
+.bt_tancar{
+  width: 175px !important;
+  font-size: 13px;
+  margin: 5px 0;
+  font-weight: bold;
+  padding: 5px 0;
+  margin-top: 10px;
+  font-style: bold;
+  text-decoration: underline;
+  color: #333333!important;
+/*  background-color: black !important;
+  color: white !important;*/
+}
+
+.bt_tancar:hover{
+  /*background-color: white !important;*/
+  color:red !important;
+}
+
+.btn-primary{
+    background-color: #ff9400;
+    border-color: black;
+    margin-bottom: 10px;
+}
+
+.btn-primary:hover{
+    background-color: black;
+    color: black;
+}
+
+.btn-primary:active{
+    background-color: black;
+}
+
+.heme_data{
+  font-size: 16px;
+}
+/*-----Style menu (finish)-----*/
+
+
+/*-----Style footer (initial)-----*/
+ul{
+  list-style-type: none;
+  padding-inline-start: 0px;
+}
+/*-----Style footer (finish)-----*/
+
+
+/*-----Style carnet (initial)-----*/
+
+/*Per fer que es canvia el format en portrait i landscape*/
+
+/*@media screen and (max-width: 449px) {*/
+.body_carnet_nou{
+  /*background-image: url("../images/carnet_port.png");
+  background-repeat: no-repeat;*/
+  background-size: 230%;
+  background-image: url("../images/background.jpg");
+  background-repeat: repeat;
+}
+
+.body_carnet_nou p{
+  font-size: 22px;
+  position: absolute;
+  /*top: 54%;*/
+  top: 430px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  font-family: "Poppins Light", "DinPro Light", "Century Gothic";
+
+  }
+
+  .carnet_top{
+    position: absolute;
+    top:0px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
+
+  .cantonada{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+/*}*/
+
+.text_carnet {
+ color: #F8EDD7 !important;
+ font-size: 25px !important;
+ font-family: Tahoma !important;
+ letter-spacing: 2px !important;
+ line-height: 1.10;
+ font-weight: 300;
+ font-style: normal;
+ text-transform: uppercase;
+ margin-top: 160px;
+ width: 300px !important;
+}
+
+/*@media screen and (min-width: 450px) {
+  .body_carnet_nou{
+    background-image: url("../images/carnet_lands.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+  .body_carnet_nou p{
+    font-size: 20px;
+    position: absolute;
+    position: absolute;
+    top:77%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+
+  }
+
+  .body_carnet_nou{
+    /*background-color: #ff9400;
+    background-color: #feba00;
+  }
+
+  */
+
+  /*ajust div footer en landscape*/
+  .col-md-4 {
+    width: 75%;
+  }
+}
+
+
+
+/*-----Style carnet (finish)-----*/
