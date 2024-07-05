@@ -91,8 +91,8 @@
         <h1 class="h6 mb-3 fw-normal"><a href="https://veuanoia.diphone.net/veuanoia">Punts de recollida</a></h1>
       </div>
       <div class="col-6">
-        <a href="https://veuanoia.cat/sortim/rutes-anoia/"><img class="mb-4" src="images/logo_rutes_anoia.png" alt="Logo de les rutes de l'Anoia'" width="150" height="150"></a>
-        <h1 class="h6 mb-3 fw-normal"><a href="https://veuanoia.cat/sortim/rutes-anoia/">Rutes de l'Anoia</a></h1>
+        <a href="https://rutesanoia.cat/"><img class="mb-4" src="images/logo_rutes_anoia.png" alt="Logo de les rutes de l'Anoia'" width="150" height="150"></a>
+        <h1 class="h6 mb-3 fw-normal"><a href="https://rutesanoia.cat/">Rutes de l'Anoia</a></h1>
       </div>
     </div> 
     <div class="row linia subscriptor area_subscriptor">
