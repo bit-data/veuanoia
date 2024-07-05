@@ -64,7 +64,7 @@
 </style>
 <link href="../css/signin.css" rel="stylesheet">
 </head>
-<body class="text-center">
+<body class="text-center" style="background-color: #f8edd7">
 
 <main class="form-signin w-100 m-auto">
   <form name="contacte" method="post" action="enviar_form.php">
