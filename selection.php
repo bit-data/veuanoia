@@ -87,8 +87,8 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <a href="https://veuanoia.diphone.net/veuanoia"><img class="mb-4" src="images/logo_punts_venda.png" alt="Logo dels punts de venda de la Veu Anoia" width="150" height="150"></a>
-        <h1 class="h6 mb-3 fw-normal"><a href="https://veuanoia.diphone.net/veuanoia">Punts de recollida</a></h1>
+        <a href="https://puntsvenda.veuanoia.cat"><img class="mb-4" src="images/logo_punts_venda.png" alt="Logo dels punts de venda de la Veu Anoia" width="150" height="150"></a>
+        <h1 class="h6 mb-3 fw-normal"><a href="https://puntsvenda.veuanoia.cat">Punts de recollida</a></h1>
       </div>
       <div class="col-6">
         <a href="https://rutesanoia.cat/"><img class="mb-4" src="images/logo_rutes_anoia.png" alt="Logo de les rutes de l'Anoia'" width="150" height="150"></a>
