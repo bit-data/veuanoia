@@ -1,6 +1,31 @@
+<?php
+
+if (!isset($_COOKIE['usuari'])) {
+  // Si no ha iniciado sesión, redirige a la página de inicio de sesión
+  header("Location: ../user_pass.php");
+  exit();
+}
+
+//$currentDate = strtotime("February 03, 2023");//per provar dates concretes
+$currentDate = time();
+$fifteenDaysAgo = strtotime("-15 day", $currentDate);
+$dayOfWeek = date('w', $fifteenDaysAgo);
+$daysToPreviousFriday = ($dayOfWeek >= 5) ? $dayOfWeek - 5 : $dayOfWeek - 5 + 7;
+$previousFriday = strtotime("-$daysToPreviousFriday day", $fifteenDaysAgo);
+$date_past = date('d-m-Y', $previousFriday);
+?>
 <!doctype html>
 <html lang="cat">
   <head>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TQSBSKN6QF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TQSBSKN6QF');
+</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -64,15 +89,6 @@
 
 </style>
 <link href="../css/signin.css" rel="stylesheet">
-<?php
-//$currentDate = strtotime("February 03, 2023");//per provar dates concretes
-$currentDate = time();
-$fifteenDaysAgo = strtotime("-15 day", $currentDate);
-$dayOfWeek = date('w', $fifteenDaysAgo);
-$daysToPreviousFriday = ($dayOfWeek >= 5) ? $dayOfWeek - 5 : $dayOfWeek - 5 + 7;
-$previousFriday = strtotime("-$daysToPreviousFriday day", $fifteenDaysAgo);
-$date_past = date('d-m-Y', $previousFriday);
-?>
 </head>
 <body class="text-center" style="background-color: #f8edd7">
   <main class="form-signin w-100 m-auto">
