@@ -34,184 +34,163 @@ $db = "dsardai2t-publicacionsanoia-main-4330105";
 $username = "club@veuanoia.cat";
 $password = "eva4";
 
-// Create a new xmlrcp client
-$client = new xmlrpc_client("$url/xmlrpc/2/common");
 
-// Crear una solicitud XML-RPC para la función "authenticate"
+$client = new xmlrpc_client("$url/xmlrpc/2/common");
 $request = new xmlrpcmsg('authenticate', array(
     new xmlrpcval($db, 'string'),
     new xmlrpcval($username, 'string'),
     new xmlrpcval($password, 'string'),
     new xmlrpcval(array(), 'struct')
 ));
-
-// Enviar la solicitud al servidor y obtener la respuesta
 $response = $client->send($request);
 
-// Obtener el UID del usuario autenticado de la respuesta
+if ($response->faultCode()) {
+    die("Error al autenticar: " . $response->faultString());
+}
+
 $uid = $response->value()->scalarval();
 
-//echo 'hola '.$uid;
-
-// Crear un objeto cliente XML-RPC para el objeto "object"
+// Crear un cliente XML-RPC para acceder al modelo 'sale.order'
 $client = new xmlrpc_client("$url/xmlrpc/2/object");
 
 // Crear una solicitud XML-RPC para la función "execute_kw"
 $request = new xmlrpcmsg('execute_kw', array(
-   new xmlrpcval($db, 'string'),
-   new xmlrpcval($uid, 'int'),
-   new xmlrpcval($password, 'string'),
-   new xmlrpcval('sale.subscription', 'string'),
-   new xmlrpcval('search_read', 'string'),
-   new xmlrpcval(
-      array(
-         new xmlrpcval(array(), 'array', 'struct'),
-         new xmlrpcval(
-            array(
-               new xmlrpcval('name', 'string'),
-               new xmlrpcval('partner_id', 'string'),
-               new xmlrpcval('stage_id', 'string')
-            ), 'array'
-         )
-      ), 'array'
-   )
-));
-
-// Enviar la solicitud al servidor y obtener la respuesta
+    new xmlrpcval($db, 'string'),
+    new xmlrpcval($uid, 'int'),
+    new xmlrpcval($password, 'string'),
+    new xmlrpcval('sale.order', 'string'),
+    new xmlrpcval('search_read', 'string'),
+    new xmlrpcval(array(), 'array'),
+    new xmlrpcval(array(
+        'fields' => new xmlrpcval(array(
+            new xmlrpcval('client_order_ref', 'string'),
+            new xmlrpcval('partner_id', 'string'),
+            new xmlrpcval('subscription_state', 'string')
+        ), 'array')
+    ), 'struct')
+));//end request
 $response = $client->send($request);
 
-// Verificar que la respuesta del servidor es válida
-if (!$response->faultCode()) {
-   // Obtener los resultados de la respuesta
-   $value = $response->value();
-   if ($value->kindOf() == 'array') {
-      $results = $value->scalarval();
-      foreach ($results as $result) {
+if ($response->faultCode()) {
+    die("Error en la consulta a Odoo: " . $response->faultString());
+}
 
-         $codi_subscriptor = $result['name']->scalarval();
-        // echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
+// Procesar y mostrar los resultados
+$value = $response->value();
+if ($value->kindOf() == 'array') {
+    $results = $value->scalarval();
+    $counter = 0; // Contador de registros con estado '3_progress'
 
-         $nom_subcriptor = $result['partner_id'][1]->scalarval();
-      //   echo "Nom: " . $nom_subcriptor . "<br>";
+    foreach ($results as $result) {
+       
+        $codi_subscriptor= $result['client_order_ref']->scalarval();
+        $partner = $result['partner_id'];      
+        $estat_subscripcio = $result['subscription_state']->scalarval(); // Posibles resultados: 1_draft, 3_progress, 4_paused, 6_churn
+       
+        // Filtrar solo si el estado de la suscripción es "3_progress" que son las activas
+        if ($estat_subscripcio == '3_progress') {
+            $partner_id = $partner[0]->scalarval(); // ID del partner
+            $nom_subcriptor = $partner[1]->scalarval(); // Nombre del partner
 
-         $estat_subscripcio = $result['stage_id'][1]->scalarval();
-      //   echo "Estat subscripció: " . $estat_subscripcio . "<br>";
-         // Hacer algo con los resultados
-
-         // Obtener el ID del partner
-         $partner_id = $result['partner_id'][0]->scalarval();
-      //   echo "id_client ".$partner_id. "<br>";
-
-// Crear una solicitud XML-RPC para la función "execute_kw" en la tabla "res.partner" con el id_partner de la conulta anterior
-$request_partner = new xmlrpcmsg('execute_kw', array(
-   new xmlrpcval($db, 'string'),
-   new xmlrpcval($uid, 'int'),
-   new xmlrpcval($password, 'string'),
-   new xmlrpcval('res.partner', 'string'),
-   new xmlrpcval('search_read', 'string'),
-   new xmlrpcval(
-      array(
-        new xmlrpcval(
-array(
-new xmlrpcval(
-array(
-new xmlrpcval('id', 'string'),
-new xmlrpcval('ilike', 'string'),
-new xmlrpcval($partner_id, 'int')
-), 'array'
-)
-), 'array', 'struct'
-),
-         new xmlrpcval(
-            array(
-               new xmlrpcval('name', 'string'),
-               new xmlrpcval('email', 'string'),
-               new xmlrpcval('mobile', 'string'),
-               new xmlrpcval('phone', 'string'),
-               new xmlrpcval('vat', 'string')
-            ), 'array'
-         )
-      ), 'array'
-   )
-));
-
-// Enviar la solicitud al servidor y obtener la respuesta
-$response_partner = $client->send($request_partner);
-
-// Verificar que la respuesta del servidor es válida
-if (!$response_partner->faultCode()) {
-   // Obtener los resultados de la respuesta
-   $value = $response_partner->value();
-   if ($value->kindOf() == 'array') {
-      $partners = $value->scalarval();
-      foreach ($partners as $partner) {
-
-        // echo "Nom: " . $partner['name']->scalarval() . "<br>";
-
-         $email_subscriptor = $partner['email']->scalarval();
-    //     echo "Email: " . $email_subscriptor . "<br>";
-
-         $mobil_subscriptor = $partner['mobile']->scalarval();
-    //     echo "mòbil: " . $mobil_subscriptor . "<br>";
-
-         $telefon_subscriptor = $partner['phone']->scalarval();
-    //     echo "phone: " . $telefon_subscriptor . "<br>";
-
-         $cif_subscriptor = $partner['vat']->scalarval();
-    //     echo "CIF: " . $cif_subscriptor . "<br>";
-
-    //     echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
-
-    //     echo "<br>";
-
-        }//foreach ($partners as $partner)
-
-        // if para instertar en la bbdd los registros que estan activo (in progress)
-        if (($estat_subscripcio == "In Progress")){
-
-        try{
-          //$sql = "SELECT * FROM subscriptors_odoo";
-            $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
-            $sql2 = "INSERT INTO subscriptors_passwords VALUES ($partner_id,'$cif_subscriptor','$cif_subscriptor')";
-
-            $stmt->bindParam(':num_subs', $codi_subscriptor, PDO::PARAM_STR);
-            $stmt->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
-            $stmt->bindParam(':nom', $nom_subcriptor, PDO::PARAM_STR);
-            $stmt->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $email_subscriptor, PDO::PARAM_STR);
-            $stmt->bindParam(':telefon', $telefon_subscriptor, PDO::PARAM_STR);
-            $stmt->bindParam(':mobil', $mobil_subscriptor, PDO::PARAM_STR);
-
-            $stmt->execute();
-
-            $stmt2->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
-            $stmt2->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
-            $stmt2->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
-
-            $stmt2->execute();
+            /*echo "Codi subscriptor: " . $codi_subscriptor . "<br>";
+            echo "id_client ".$partner_id. "<br>";
+            echo "Nom: " . $nom_subcriptor . "<br>";
+            echo "Estat subscripció: " . $estat_subscripcio . "<br>";*/
+            $counter++; // Incrementar el contador
 
 
-        $connection = null;
+            $request = new xmlrpcmsg('execute_kw', array(
+                new xmlrpcval($db, 'string'),
+                new xmlrpcval($uid, 'int'),
+                new xmlrpcval($password, 'string'),
+                new xmlrpcval('res.partner', 'string'),
+                new xmlrpcval('search_read', 'string'),
+                new xmlrpcval(array(
+                    new xmlrpcval(array(
+                        new xmlrpcval(array(
+                            new xmlrpcval('id', 'string'),
+                            new xmlrpcval('=', 'string'),
+                            new xmlrpcval($partner_id, 'int')
+                        ), 'array')
+                    ), 'array')
+                ), 'array'),
+                new xmlrpcval(array(
+                    'fields' => new xmlrpcval(array(
+                        new xmlrpcval('id', 'string'),
+                        new xmlrpcval('name', 'string'),
+                        new xmlrpcval('mobile', 'string'),
+                        new xmlrpcval('phone', 'string'),
+                        new xmlrpcval('vat', 'string'),
+                        new xmlrpcval('email', 'string')
+                    ), 'array')
+                ), 'struct')
+             ));
+             
+             $response = $client->send($request);    
 
-        }//end try
-        catch (PDOException $e) {
-            // Si ocurre un error, mostrar un mensaje de error personalizado
-          //  echo "Error al insertar les dades en la bbbdd: " . $e->getMessage();
-        }
-        }//end if "in progress"
+             if ($response->faultCode()) {
+                die("Error en la consulta a Odoo: " . $response->faultString());
+            }
+            
+            $value = $response->value();
+if ($value->kindOf() == 'array') {
+    $results = $value->scalarval();
+    //$counter = 0; // Contador de registros con estado '3_progress'
 
-      }//2n if ($value->kindOf() == 'array')
-    }//if (!$response_partner->faultCode())
-  }//end foreach ($results as $result)
-}//if 1er ($value->kindOf() == 'array')
+    foreach ($results as $result) {
+        $id = $result['id']->scalarval();
+        $name = $result['name']->scalarval();
+        $mobil_subscriptor = $result['mobile']->scalarval();
+        $telefon_subscriptor = $result['phone']->scalarval(); 
+        $cif_subscriptor = $result['vat']->scalarval();     
+        $email_subscriptor = $result['email']->scalarval();
+       
+        //echo "ID: $id, Name: $name, Telèfon: $telefon_subscriptor, mobil: $mobil_subscriptor, CIF: $cif_subscriptor,  email: $email_subscriptor <br><br>";
+      
+        
+    }//end foreach
 
-}//end 1er if(!$response->faultCode())
+    try{
+        //$sql = "SELECT * FROM subscriptors_odoo";
+          $sql = "INSERT INTO subscriptors_odoo VALUES ('','$codi_subscriptor',$partner_id,'$nom_subcriptor','$cif_subscriptor','$email_subscriptor','$telefon_subscriptor','$mobil_subscriptor')";
+          $sql2 = "INSERT INTO subscriptors_passwords VALUES ($partner_id,'$cif_subscriptor','$cif_subscriptor')";
 
-//per inserir subscriptor de prova i comprovar els registres inserits
+          $stmt->bindParam(':num_subs', $codi_subscriptor, PDO::PARAM_STR);
+          $stmt->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+          $stmt->bindParam(':nom', $nom_subcriptor, PDO::PARAM_STR);
+          $stmt->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+          $stmt->bindParam(':email', $email_subscriptor, PDO::PARAM_STR);
+          $stmt->bindParam(':telefon', $telefon_subscriptor, PDO::PARAM_STR);
+          $stmt->bindParam(':mobil', $mobil_subscriptor, PDO::PARAM_STR);
+
+          $stmt->execute();
+
+          $stmt2->bindParam(':id_partern', $partner_id, PDO::PARAM_STR);
+          $stmt2->bindParam(':dni', $cif_subscriptor, PDO::PARAM_STR);
+          $stmt2->bindParam(':password', $cif_subscriptor, PDO::PARAM_STR);
+
+          $stmt2->execute();
+
+
+      $connection = null;
+
+      }//end try
+      catch (PDOException $e) {
+          // Si ocurre un error, mostrar un mensaje de error personalizado
+        //  echo "Error al insertar les dades en la bbbdd: " . $e->getMessage();
+      }//end catch
+
+}//end kindOf id_partner             
+        }//end if estat subscripció
+     
+    }//end 1er foreach
+    echo "<br>Total de registros con subscription_state = 3_progress: $counter";
+} /*end kindOf id_partner */else {
+    echo "No se obtuvieron resultados.";
+}//end else
+
 $stmt4->execute();
 $stmt5->execute();
 $contador = $stmt5->fetchColumn();
-
 echo "S'han inserit ". $contador. " registres";
-
 ?>

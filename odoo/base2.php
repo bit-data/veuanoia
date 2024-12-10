@@ -31,7 +31,9 @@ $url = "https://publicacionsanoia.odoo.com";
 $db = "dsardai2t-publicacionsanoia-main-4330105";
 $username = "club@veuanoia.cat";
 $password = "eva4";
+//ATENCIÓ per veure els camps inserir excel des del portal oddo en les taules, allà surt nom original
 
+/*
 // Create a new xmlrcp client
 $client = new xmlrpc_client("$url/xmlrpc/2/common");
 
@@ -203,12 +205,109 @@ if (!$response_partner->faultCode()) {
   }//end foreach ($results as $result)
 }//if 1er ($value->kindOf() == 'array')
 
-}//end 1er if(!$response->faultCode())
+}//end 1er if(!$response->faultCode())*/
+$client = new xmlrpc_client("$url/xmlrpc/2/common");
+$request = new xmlrpcmsg('authenticate', array(
+    new xmlrpcval($db, 'string'),
+    new xmlrpcval($username, 'string'),
+    new xmlrpcval($password, 'string'),
+    new xmlrpcval(array(), 'struct')
+));
+$response = $client->send($request);
 
-//per comprovar els registres inserits
-$stmt4->execute();
-$contador = $stmt4->fetchColumn();
+if ($response->faultCode()) {
+    die("Error al autenticar: " . $response->faultString());
+}
 
-echo "S'han inserit ". $contador. " registres";
+$uid = $response->value()->scalarval();
+
+// Crear un cliente XML-RPC para acceder al modelo 'sale.order'
+$client = new xmlrpc_client("$url/xmlrpc/2/object");
+//consulta de id concreto
+$request = new xmlrpcmsg('execute_kw', array(
+   new xmlrpcval($db, 'string'),
+   new xmlrpcval($uid, 'int'),
+   new xmlrpcval($password, 'string'),
+   new xmlrpcval('res.partner', 'string'),
+   new xmlrpcval('search_read', 'string'),
+   new xmlrpcval(array(
+       new xmlrpcval(array(
+           new xmlrpcval(array(
+               new xmlrpcval('id', 'string'),
+               new xmlrpcval('=', 'string'),
+               new xmlrpcval(33162, 'int')
+           ), 'array')
+       ), 'array')
+   ), 'array'),
+   new xmlrpcval(array(
+       'fields' => new xmlrpcval(array(
+           new xmlrpcval('id', 'string'),
+           new xmlrpcval('name', 'string'),
+           new xmlrpcval('mobile', 'string'),
+           new xmlrpcval('phone', 'string'),
+           new xmlrpcval('vat', 'string'),
+           new xmlrpcval('email', 'string')
+       ), 'array')
+   ), 'struct')
+));
+
+$response = $client->send($request);
+
+//consulta de todos los IDs
+/*$request = new xmlrpcmsg('execute_kw', array(
+    new xmlrpcval($db, 'string'),
+    new xmlrpcval($uid, 'int'),
+    new xmlrpcval($password, 'string'),
+    new xmlrpcval('res.partner', 'string'),
+    new xmlrpcval('search_read', 'string'),
+    new xmlrpcval(array(), 'array'),
+    new xmlrpcval(array(
+        'fields' => new xmlrpcval(array(
+            new xmlrpcval('id', 'string'),
+            new xmlrpcval('name', 'string'),
+            new xmlrpcval('mobile', 'string'),
+            new xmlrpcval('phone', 'string'),
+            new xmlrpcval('vat', 'string'),
+            new xmlrpcval('email', 'string'),
+            //new xmlrpcval('subscription_state', 'string'),
+            //new xmlrpcval('invoice_status', 'string')
+        ), 'array')
+    ), 'struct')
+));*/
+
+if ($response->faultCode()) {
+    die("Error en la consulta a Odoo: " . $response->faultString());
+}
+
+
+// Procesar y mostrar los resultados
+$value = $response->value();
+if ($value->kindOf() == 'array') {
+    $results = $value->scalarval();
+    $counter = 0; // Contador de registros con estado '3_progress'
+
+    foreach ($results as $result) {
+        $id = $result['id']->scalarval();
+        $name = $result['name']->scalarval();
+        $mobil_subscriptor = $result['mobile']->scalarval();
+        $telefon_subscriptor = $result['phone']->scalarval(); 
+        $cif_subscriptor = $result['vat']->scalarval();     
+        $email_subscriptor = $result['email']->scalarval();
+        //$sub_state = $result['subscription_state']->scalarval(); // Posibles resultados: 1_draft, 3_progress, 4_paused, 6_churn
+        //$invoice_status = $result['invoice_status']->scalarval();
+
+        // Filtrar solo si el estado de la suscripción es "3_progress"
+        //if ($sub_state == '3_progress') {
+       //     $partner_id = $partner[0]->scalarval(); // ID del partner
+           // $partner_name = $partner[1]->scalarval(); // Nombre del partner
+
+            echo "ID: $id, Name: $name, Telèfon: $telefon_subscriptor, mobil: $mobil_subscriptor, CIF: $cif_subscriptor,  email: $email_subscriptor <br>";
+            $counter++; // Incrementar el contador
+        //}
+    }
+    echo "<br>Total de registros con subscription_state = 3_progress: $counter";
+} else {
+    echo "No se obtuvieron resultados.";
+}
 
 ?>
