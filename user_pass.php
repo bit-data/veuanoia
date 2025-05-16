@@ -108,7 +108,7 @@
         <li>&copy; 2023 La Veu Anoia</li>
         <li><a href="https://veuanoia.cat/politica-de-privacitat/">Política de privacitat</li></a>
         <li><a href="https://veuanoia.cat/politica-de-cookies/">Política de cookies</li></a>
-        <li>Developed by <a href="https://www.bit-data.es">Bit-Data</li></a>
+        <li>Developed by <a href="https://www.bit-data.es/index.php">Bit-Data</li></a>
       </ul></span>
     </div>
     <ul class="">
